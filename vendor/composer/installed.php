@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => '__root__',
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
-        'reference' => '6a36be6672fd0bba38a0dd41eba3757c43b25408',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '8c69a0c887d0ce041882a07ff70d0ec6a1e99b9b',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => '6a36be6672fd0bba38a0dd41eba3757c43b25408',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '8c69a0c887d0ce041882a07ff70d0ec6a1e99b9b',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -1235,6 +1235,15 @@
             'reference' => 'e78db7f5c70a21f0417a31f414c4a95fe76c07e4',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/yaml',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'symfonycasts/verify-email-bundle' => array(
+            'pretty_version' => 'v1.17.0',
+            'version' => '1.17.0.0',
+            'reference' => 'f72af149070b39ef82a7095074378d0a98b4d2ef',
+            'type' => 'symfony-bundle',
+            'install_path' => __DIR__ . '/../symfonycasts/verify-email-bundle',
             'aliases' => array(),
             'dev_requirement' => false,
         ),

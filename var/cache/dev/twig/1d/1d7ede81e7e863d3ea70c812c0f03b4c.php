@@ -812,6 +812,6 @@ class __TwigTemplate_294f61faebe8edbc8e6af75caad026da extends Template
         </table>
     {% endif %}
 {% endblock %}
-", "@WebProfiler/Collector/config.html.twig", "C:\\Users\\touti\\PidevWeb\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\config.html.twig");
+", "@WebProfiler/Collector/config.html.twig", "C:\\Users\\touti\\Documents\\PidevWeb\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Collector\\config.html.twig");
     }
 }

@@ -79,6 +79,6 @@ class __TwigTemplate_be5ad0718c5d85ba747ef4156bda5740 extends Template
     <line x1=\"7\" y1=\"7\" x2=\"7\" y2=\"17\"></line>
     <line x1=\"4\" y1=\"8\" x2=\"4\" y2=\"16\"></line>
 </svg>
-", "@DoctrineMigrations/Collector/icon-v3.svg", "C:\\Users\\touti\\PidevWeb\\vendor\\doctrine\\doctrine-migrations-bundle\\Resources\\views\\Collector\\icon-v3.svg");
+", "@DoctrineMigrations/Collector/icon-v3.svg", "C:\\Users\\touti\\Documents\\PidevWeb\\vendor\\doctrine\\doctrine-migrations-bundle\\Resources\\views\\Collector\\icon-v3.svg");
     }
 }

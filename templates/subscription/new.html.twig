@@ -41,14 +41,17 @@
                 <div class="form-group">
                     {{ form_label(form.name) }}
                     {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.name) }}
                 </div>
                 <div class="form-group">
                     {{ form_label(form.type) }}
                     {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.type) }}
                 </div>
                 <div class="form-group">
                     {{ form_label(form.price) }}
                     {{ form_widget(form.price, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.price) }}
                 </div>
                 <button class="btn btn-primary">Save</button>
                 {{ form_end(form) }}

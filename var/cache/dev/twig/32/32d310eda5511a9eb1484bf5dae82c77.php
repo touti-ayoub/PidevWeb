@@ -75,7 +75,7 @@ class __TwigTemplate_215cfce197517939a201cdf2e8312265 extends Template
 ";
         // line 27
         $this->displayBlock('body', $context, $blocks);
-        // line 441
+        // line 455
         echo "</body>
 
 </html>";
@@ -165,12 +165,12 @@ class __TwigTemplate_215cfce197517939a201cdf2e8312265 extends Template
         ";
         // line 31
         $this->displayBlock('aside', $context, $blocks);
-        // line 114
+        // line 128
         echo "    </aside>
     ";
-        // line 115
+        // line 129
         $this->displayBlock('main', $context, $blocks);
-        // line 246
+        // line 260
         echo "
     <div class=\"fixed-plugin\">
         <a class=\"fixed-plugin-button text-dark position-fixed px-3 py-2\">
@@ -265,23 +265,23 @@ class __TwigTemplate_215cfce197517939a201cdf2e8312265 extends Template
     </div>
     <!--   Core JS Files   -->
     <script src=\"";
-        // line 339
+        // line 353
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/js/core/popper.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 340
+        // line 354
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/js/core/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 341
+        // line 355
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/js/plugins/perfect-scrollbar.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 342
+        // line 356
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/js/plugins/smooth-scrollbar.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 343
+        // line 357
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/js/plugins/chartjs.min.js"), "html", null, true);
         echo "\"></script>
     <script>
@@ -380,7 +380,7 @@ class __TwigTemplate_215cfce197517939a201cdf2e8312265 extends Template
     <script async defer src=\"https://buttons.github.io/buttons.js\"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src=\"";
-        // line 439
+        // line 453
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/js/argon-dashboard.min.js"), "html", null, true);
         echo "?v=2.0.4\"></script>
 ";
@@ -404,22 +404,23 @@ class __TwigTemplate_215cfce197517939a201cdf2e8312265 extends Template
 
         // line 32
         echo "        <div class=\"sidenav-header\">
-            <i class=\"fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none\"
-               aria-hidden=\"true\" id=\"iconSidenav\"></i>
-            <a class=\"navbar-brand m-0\" href=\" https://demos.creative-tim.com/argon-dashboard/pages/dashboard.html \"
-               target=\"_blank\">
+
+            <a class=\"navbar-brand m-0\">
                 <img src=\"";
-        // line 37
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/img/logo-ct-dark.png"), "html", null, true);
-        echo "\" class=\"navbar-brand-img h-100\"
-                     alt=\"main_logo\"> <span class=\"ms-1 font-weight-bold\">Argon Dashboard 2</span>
+        // line 35
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/img/iron_core_black.png"), "html", null, true);
+        echo "\" width=\"50\" height=\"100\"
+                     alt=\"main_logo\"> <span class=\"ms-1 font-weight-bold\">IRON Core GYM</span>
             </a>
         </div>
         <hr class=\"horizontal dark mt-0\">
         <div>
             <ul class=\"navbar-nav\">
                 <li class=\"nav-item\">
-                    <a class=\"nav-link active\" href=\"./pages/dashboard.html\">
+                    <a class=\"nav-link active\" href=\"";
+        // line 43
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_dashboard");
+        echo "\">
                         <div class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
                             <i class=\"ni ni-tv-2 text-primary text-sm opacity-10\"></i>
                         </div>
@@ -429,44 +430,30 @@ class __TwigTemplate_215cfce197517939a201cdf2e8312265 extends Template
                 <li class=\"nav-item\">
                     <a class=\"nav-link \" href=\"./pages/tables.html\">
                         <div class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
-                            <i class=\"ni ni-calendar-grid-58 text-warning text-sm opacity-10\"></i>
+                            <i class=\"ni ni-single-02 text-dark text-sm opacity-10\"></i>
                         </div>
-                        <span class=\"nav-link-text ms-1\">Tables</span>
+                        <span class=\"nav-link-text ms-1\">Users</span>
                     </a>
                 </li>
                 <li class=\"nav-item\">
-                    <a class=\"nav-link \" href=\"./pages/billing.html\">
-                        <div class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
+                    <a class=\"nav-link \" href=\"";
+        // line 59
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_subscription_index");
+        echo "\">                        <div class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
                             <i class=\"ni ni-credit-card text-success text-sm opacity-10\"></i>
                         </div>
-                        <span class=\"nav-link-text ms-1\">Billing</span>
-                    </a>
-                </li>
-                <li class=\"nav-item\">
-                    <a class=\"nav-link \" href=\"./pages/virtual-reality.html\">
-                        <div class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
-                            <i class=\"ni ni-app text-info text-sm opacity-10\"></i>
-                        </div>
-                        <span class=\"nav-link-text ms-1\">Virtual Reality</span>
-                    </a>
-                </li>
-                <li class=\"nav-item\">
-                    <a class=\"nav-link \" href=\"./pages/rtl.html\">
-                        <div class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
-                            <i class=\"ni ni-world-2 text-danger text-sm opacity-10\"></i>
-                        </div>
-                        <span class=\"nav-link-text ms-1\">RTL</span>
+                        <span class=\"nav-link-text ms-1\">Subscriptions</span>
                     </a>
                 </li>
                 <li class=\"nav-item mt-3\">
-                    <h6 class=\"ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6\">Account pages</h6>
+                    <h6 class=\"ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6\">Coaching</h6>
                 </li>
                 <li class=\"nav-item\">
                     <a class=\"nav-link \" href=\"./pages/profile.html\">
                         <div class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
                             <i class=\"ni ni-single-02 text-dark text-sm opacity-10\"></i>
                         </div>
-                        <span class=\"nav-link-text ms-1\">Profile</span>
+                        <span class=\"nav-link-text ms-1\">Exercises</span>
                     </a>
                 </li>
                 <li class=\"nav-item\">
@@ -474,15 +461,48 @@ class __TwigTemplate_215cfce197517939a201cdf2e8312265 extends Template
                         <div class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
                             <i class=\"ni ni-single-copy-04 text-warning text-sm opacity-10\"></i>
                         </div>
-                        <span class=\"nav-link-text ms-1\">Sign In</span>
+                        <span class=\"nav-link-text ms-1\">Plans</span>
+                    </a>
+                </li>
+                <li class=\"nav-item mt-3\">
+                    <h6 class=\"ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6\">Nutrition</h6>
+                </li>
+                <li class=\"nav-item\">
+                    <a class=\"nav-link \" href=\"./pages/profile.html\">
+                        <div class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
+                            <i class=\"ni ni-single-02 text-dark text-sm opacity-10\"></i>
+                        </div>
+                        <span class=\"nav-link-text ms-1\">Food</span>
                     </a>
                 </li>
                 <li class=\"nav-item\">
-                    <a class=\"nav-link \" href=\"./pages/sign-up.html\">
+                    <a class=\"nav-link \" href=\"./pages/sign-in.html\">
                         <div class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
-                            <i class=\"ni ni-collection text-info text-sm opacity-10\"></i>
+                            <i class=\"ni ni-single-copy-04 text-warning text-sm opacity-10\"></i>
                         </div>
-                        <span class=\"nav-link-text ms-1\">Sign Up</span>
+                        <span class=\"nav-link-text ms-1\">Recipes</span>
+                    </a>
+                </li>
+                <li class=\"nav-item mt-3\">
+                    <h6 class=\"ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6\">Events</h6>
+                </li>
+                <li class=\"nav-item\">
+                    <a class=\"nav-link \" href=\"./pages/profile.html\">
+                        <div class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
+                            <i class=\"ni ni-single-02 text-dark text-sm opacity-10\"></i>
+                        </div>
+                        <span class=\"nav-link-text ms-1\">Competitions</span>
+                    </a>
+                </li>
+                <li class=\"nav-item mt-3\">
+                    <h6 class=\"ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6\">Stock</h6>
+                </li>
+                <li class=\"nav-item\">
+                    <a class=\"nav-link \" href=\"./pages/profile.html\">
+                        <div class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
+                            <i class=\"ni ni-single-02 text-dark text-sm opacity-10\"></i>
+                        </div>
+                        <span class=\"nav-link-text ms-1\">Products</span>
                     </a>
                 </li>
             </ul>
@@ -496,7 +516,7 @@ class __TwigTemplate_215cfce197517939a201cdf2e8312265 extends Template
 
     }
 
-    // line 115
+    // line 129
     public function block_main($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -506,7 +526,7 @@ class __TwigTemplate_215cfce197517939a201cdf2e8312265 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "main"));
 
-        // line 116
+        // line 130
         echo "    <main class=\"main-content position-relative border-radius-lg \">
         <!-- Navbar -->
         <nav class=\"navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl \" id=\"navbarBlur\"
@@ -561,7 +581,7 @@ class __TwigTemplate_215cfce197517939a201cdf2e8312265 extends Template
                                         <div class=\"d-flex py-1\">
                                             <div class=\"my-auto\">
                                                 <img src=\"";
-        // line 169
+        // line 183
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/img/team-2.jpg"), "html", null, true);
         echo "\"
                                                      class=\"avatar avatar-sm  me-3 \"></div>
@@ -582,7 +602,7 @@ class __TwigTemplate_215cfce197517939a201cdf2e8312265 extends Template
                                         <div class=\"d-flex py-1\">
                                             <div class=\"my-auto\">
                                                 <img src=\"";
-        // line 187
+        // line 201
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/img/small-logos/logo-spotify.svg"), "html", null, true);
         echo "\"
                                                      class=\"avatar avatar-sm bg-gradient-dark  me-3 \"></div>
@@ -672,7 +692,7 @@ class __TwigTemplate_215cfce197517939a201cdf2e8312265 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  586 => 187,  565 => 169,  510 => 116,  500 => 115,  413 => 37,  406 => 32,  396 => 31,  384 => 439,  285 => 343,  281 => 342,  277 => 341,  273 => 340,  269 => 339,  174 => 246,  172 => 115,  169 => 114,  167 => 31,  162 => 28,  152 => 27,  140 => 22,  135 => 20,  129 => 17,  125 => 16,  120 => 13,  110 => 12,  91 => 10,  79 => 441,  77 => 27,  72 => 24,  70 => 12,  67 => 11,  65 => 10,  60 => 8,  56 => 7,  48 => 1,);
+        return array (  606 => 201,  585 => 183,  530 => 130,  520 => 129,  441 => 59,  422 => 43,  411 => 35,  406 => 32,  396 => 31,  384 => 453,  285 => 357,  281 => 356,  277 => 355,  273 => 354,  269 => 353,  174 => 260,  172 => 129,  169 => 128,  167 => 31,  162 => 28,  152 => 27,  140 => 22,  135 => 20,  129 => 17,  125 => 16,  120 => 13,  110 => 12,  91 => 10,  79 => 455,  77 => 27,  72 => 24,  70 => 12,  67 => 11,  65 => 10,  60 => 8,  56 => 7,  48 => 1,);
     }
 
     public function getSourceContext()
@@ -709,19 +729,17 @@ class __TwigTemplate_215cfce197517939a201cdf2e8312265 extends Template
            id=\"sidenav-main\">
         {% block aside %}
         <div class=\"sidenav-header\">
-            <i class=\"fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none\"
-               aria-hidden=\"true\" id=\"iconSidenav\"></i>
-            <a class=\"navbar-brand m-0\" href=\" https://demos.creative-tim.com/argon-dashboard/pages/dashboard.html \"
-               target=\"_blank\">
-                <img src=\"{{ asset('back-office/img/logo-ct-dark.png') }}\" class=\"navbar-brand-img h-100\"
-                     alt=\"main_logo\"> <span class=\"ms-1 font-weight-bold\">Argon Dashboard 2</span>
+
+            <a class=\"navbar-brand m-0\">
+                <img src=\"{{ asset('back-office/img/iron_core_black.png') }}\" width=\"50\" height=\"100\"
+                     alt=\"main_logo\"> <span class=\"ms-1 font-weight-bold\">IRON Core GYM</span>
             </a>
         </div>
         <hr class=\"horizontal dark mt-0\">
         <div>
             <ul class=\"navbar-nav\">
                 <li class=\"nav-item\">
-                    <a class=\"nav-link active\" href=\"./pages/dashboard.html\">
+                    <a class=\"nav-link active\" href=\"{{ path('app_dashboard') }}\">
                         <div class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
                             <i class=\"ni ni-tv-2 text-primary text-sm opacity-10\"></i>
                         </div>
@@ -731,44 +749,27 @@ class __TwigTemplate_215cfce197517939a201cdf2e8312265 extends Template
                 <li class=\"nav-item\">
                     <a class=\"nav-link \" href=\"./pages/tables.html\">
                         <div class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
-                            <i class=\"ni ni-calendar-grid-58 text-warning text-sm opacity-10\"></i>
+                            <i class=\"ni ni-single-02 text-dark text-sm opacity-10\"></i>
                         </div>
-                        <span class=\"nav-link-text ms-1\">Tables</span>
+                        <span class=\"nav-link-text ms-1\">Users</span>
                     </a>
                 </li>
                 <li class=\"nav-item\">
-                    <a class=\"nav-link \" href=\"./pages/billing.html\">
-                        <div class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
+                    <a class=\"nav-link \" href=\"{{ path('app_subscription_index') }}\">                        <div class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
                             <i class=\"ni ni-credit-card text-success text-sm opacity-10\"></i>
                         </div>
-                        <span class=\"nav-link-text ms-1\">Billing</span>
-                    </a>
-                </li>
-                <li class=\"nav-item\">
-                    <a class=\"nav-link \" href=\"./pages/virtual-reality.html\">
-                        <div class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
-                            <i class=\"ni ni-app text-info text-sm opacity-10\"></i>
-                        </div>
-                        <span class=\"nav-link-text ms-1\">Virtual Reality</span>
-                    </a>
-                </li>
-                <li class=\"nav-item\">
-                    <a class=\"nav-link \" href=\"./pages/rtl.html\">
-                        <div class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
-                            <i class=\"ni ni-world-2 text-danger text-sm opacity-10\"></i>
-                        </div>
-                        <span class=\"nav-link-text ms-1\">RTL</span>
+                        <span class=\"nav-link-text ms-1\">Subscriptions</span>
                     </a>
                 </li>
                 <li class=\"nav-item mt-3\">
-                    <h6 class=\"ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6\">Account pages</h6>
+                    <h6 class=\"ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6\">Coaching</h6>
                 </li>
                 <li class=\"nav-item\">
                     <a class=\"nav-link \" href=\"./pages/profile.html\">
                         <div class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
                             <i class=\"ni ni-single-02 text-dark text-sm opacity-10\"></i>
                         </div>
-                        <span class=\"nav-link-text ms-1\">Profile</span>
+                        <span class=\"nav-link-text ms-1\">Exercises</span>
                     </a>
                 </li>
                 <li class=\"nav-item\">
@@ -776,15 +777,48 @@ class __TwigTemplate_215cfce197517939a201cdf2e8312265 extends Template
                         <div class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
                             <i class=\"ni ni-single-copy-04 text-warning text-sm opacity-10\"></i>
                         </div>
-                        <span class=\"nav-link-text ms-1\">Sign In</span>
+                        <span class=\"nav-link-text ms-1\">Plans</span>
+                    </a>
+                </li>
+                <li class=\"nav-item mt-3\">
+                    <h6 class=\"ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6\">Nutrition</h6>
+                </li>
+                <li class=\"nav-item\">
+                    <a class=\"nav-link \" href=\"./pages/profile.html\">
+                        <div class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
+                            <i class=\"ni ni-single-02 text-dark text-sm opacity-10\"></i>
+                        </div>
+                        <span class=\"nav-link-text ms-1\">Food</span>
                     </a>
                 </li>
                 <li class=\"nav-item\">
-                    <a class=\"nav-link \" href=\"./pages/sign-up.html\">
+                    <a class=\"nav-link \" href=\"./pages/sign-in.html\">
                         <div class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
-                            <i class=\"ni ni-collection text-info text-sm opacity-10\"></i>
+                            <i class=\"ni ni-single-copy-04 text-warning text-sm opacity-10\"></i>
                         </div>
-                        <span class=\"nav-link-text ms-1\">Sign Up</span>
+                        <span class=\"nav-link-text ms-1\">Recipes</span>
+                    </a>
+                </li>
+                <li class=\"nav-item mt-3\">
+                    <h6 class=\"ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6\">Events</h6>
+                </li>
+                <li class=\"nav-item\">
+                    <a class=\"nav-link \" href=\"./pages/profile.html\">
+                        <div class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
+                            <i class=\"ni ni-single-02 text-dark text-sm opacity-10\"></i>
+                        </div>
+                        <span class=\"nav-link-text ms-1\">Competitions</span>
+                    </a>
+                </li>
+                <li class=\"nav-item mt-3\">
+                    <h6 class=\"ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6\">Stock</h6>
+                </li>
+                <li class=\"nav-item\">
+                    <a class=\"nav-link \" href=\"./pages/profile.html\">
+                        <div class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
+                            <i class=\"ni ni-single-02 text-dark text-sm opacity-10\"></i>
+                        </div>
+                        <span class=\"nav-link-text ms-1\">Products</span>
                     </a>
                 </li>
             </ul>

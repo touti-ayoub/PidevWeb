@@ -112,6 +112,12 @@ class __TwigTemplate_9e9ad52583d5f9bbf1af2cf0faa9407c extends Template
         echo "    ";
         $this->displayParentBlock("body", $context, $blocks);
         echo "
+    <div class=\"card\" style=\"width: 20rem; margin-left: 700px; margin-top:80px\">
+        <img src=\"";
+        // line 9
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/img/iron_core_black.png"), "html", null, true);
+        echo "\" width=\"300\" height=\"300\">
+    </div>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -142,7 +148,7 @@ class __TwigTemplate_9e9ad52583d5f9bbf1af2cf0faa9407c extends Template
      */
     public function getDebugInfo()
     {
-        return array (  112 => 7,  102 => 6,  89 => 4,  79 => 3,  60 => 2,  37 => 1,);
+        return array (  118 => 9,  112 => 7,  102 => 6,  89 => 4,  79 => 3,  60 => 2,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -154,6 +160,9 @@ class __TwigTemplate_9e9ad52583d5f9bbf1af2cf0faa9407c extends Template
 {% endblock %}
 {% block body %}
     {{ parent() }}
+    <div class=\"card\" style=\"width: 20rem; margin-left: 700px; margin-top:80px\">
+        <img src=\"{{ asset('back-office/img/iron_core_black.png') }}\" width=\"300\" height=\"300\">
+    </div>
 {% endblock %}
 ", "dashboard/index.html.twig", "C:\\Users\\touti\\Documents\\PidevWeb\\templates\\dashboard\\index.html.twig");
     }

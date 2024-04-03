@@ -118,46 +118,39 @@ class __TwigTemplate_0c06c572f805c35107992bdb4c3cb142 extends Template
         <table class=\"table\">
             <tbody>
             <tr>
-                <th>Id</th>
-                <td>";
-        // line 16
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["subscription"]) || array_key_exists("subscription", $context) ? $context["subscription"] : (function () { throw new RuntimeError('Variable "subscription" does not exist.', 16, $this->source); })()), "id", [], "any", false, false, false, 16), "html", null, true);
-        echo "</td>
-            </tr>
-            <tr>
                 <th>Name</th>
                 <td>";
-        // line 20
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["subscription"]) || array_key_exists("subscription", $context) ? $context["subscription"] : (function () { throw new RuntimeError('Variable "subscription" does not exist.', 20, $this->source); })()), "name", [], "any", false, false, false, 20), "html", null, true);
+        // line 16
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["subscription"]) || array_key_exists("subscription", $context) ? $context["subscription"] : (function () { throw new RuntimeError('Variable "subscription" does not exist.', 16, $this->source); })()), "name", [], "any", false, false, false, 16), "html", null, true);
         echo "</td>
             </tr>
             <tr>
                 <th>Type</th>
                 <td>";
-        // line 24
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["subscription"]) || array_key_exists("subscription", $context) ? $context["subscription"] : (function () { throw new RuntimeError('Variable "subscription" does not exist.', 24, $this->source); })()), "type", [], "any", false, false, false, 24), "html", null, true);
+        // line 20
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["subscription"]) || array_key_exists("subscription", $context) ? $context["subscription"] : (function () { throw new RuntimeError('Variable "subscription" does not exist.', 20, $this->source); })()), "type", [], "any", false, false, false, 20), "html", null, true);
         echo "</td>
             </tr>
             <tr>
                 <th>Price</th>
                 <td>";
-        // line 28
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["subscription"]) || array_key_exists("subscription", $context) ? $context["subscription"] : (function () { throw new RuntimeError('Variable "subscription" does not exist.', 28, $this->source); })()), "price", [], "any", false, false, false, 28), "html", null, true);
+        // line 24
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["subscription"]) || array_key_exists("subscription", $context) ? $context["subscription"] : (function () { throw new RuntimeError('Variable "subscription" does not exist.', 24, $this->source); })()), "price", [], "any", false, false, false, 24), "html", null, true);
         echo "</td>
             </tr>
             </tbody>
         </table>
 
         <a href=\"";
-        // line 33
+        // line 29
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_subscription_index");
         echo "\" class=\"btn btn-primary\">back to list</a>
         <a href=\"";
-        // line 34
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_subscription_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["subscription"]) || array_key_exists("subscription", $context) ? $context["subscription"] : (function () { throw new RuntimeError('Variable "subscription" does not exist.', 34, $this->source); })()), "id", [], "any", false, false, false, 34)]), "html", null, true);
+        // line 30
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_subscription_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["subscription"]) || array_key_exists("subscription", $context) ? $context["subscription"] : (function () { throw new RuntimeError('Variable "subscription" does not exist.', 30, $this->source); })()), "id", [], "any", false, false, false, 30)]), "html", null, true);
         echo "\" class=\"btn btn-primary\">edit</a>
         ";
-        // line 35
+        // line 31
         echo twig_include($this->env, $context, "subscription/_delete_form.html.twig");
         echo "
     </div>
@@ -192,7 +185,7 @@ class __TwigTemplate_0c06c572f805c35107992bdb4c3cb142 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  161 => 35,  157 => 34,  153 => 33,  145 => 28,  138 => 24,  131 => 20,  124 => 16,  112 => 8,  102 => 7,  89 => 5,  79 => 4,  60 => 3,  37 => 1,);
+        return array (  154 => 31,  150 => 30,  146 => 29,  138 => 24,  131 => 20,  124 => 16,  112 => 8,  102 => 7,  89 => 5,  79 => 4,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -210,10 +203,6 @@ class __TwigTemplate_0c06c572f805c35107992bdb4c3cb142 extends Template
         <h5 class=\"card-title\">Subscriptions</h5>
         <table class=\"table\">
             <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ subscription.id }}</td>
-            </tr>
             <tr>
                 <th>Name</th>
                 <td>{{ subscription.name }}</td>

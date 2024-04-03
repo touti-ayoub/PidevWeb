@@ -75,7 +75,7 @@ class __TwigTemplate_215cfce197517939a201cdf2e8312265 extends Template
 ";
         // line 27
         $this->displayBlock('body', $context, $blocks);
-        // line 455
+        // line 456
         echo "</body>
 
 </html>";
@@ -165,12 +165,12 @@ class __TwigTemplate_215cfce197517939a201cdf2e8312265 extends Template
         ";
         // line 31
         $this->displayBlock('aside', $context, $blocks);
-        // line 128
+        // line 129
         echo "    </aside>
     ";
-        // line 129
+        // line 130
         $this->displayBlock('main', $context, $blocks);
-        // line 260
+        // line 261
         echo "
     <div class=\"fixed-plugin\">
         <a class=\"fixed-plugin-button text-dark position-fixed px-3 py-2\">
@@ -265,23 +265,23 @@ class __TwigTemplate_215cfce197517939a201cdf2e8312265 extends Template
     </div>
     <!--   Core JS Files   -->
     <script src=\"";
-        // line 353
+        // line 354
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/js/core/popper.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 354
+        // line 355
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/js/core/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 355
+        // line 356
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/js/plugins/perfect-scrollbar.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 356
+        // line 357
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/js/plugins/smooth-scrollbar.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 357
+        // line 358
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/js/plugins/chartjs.min.js"), "html", null, true);
         echo "\"></script>
     <script>
@@ -380,7 +380,7 @@ class __TwigTemplate_215cfce197517939a201cdf2e8312265 extends Template
     <script async defer src=\"https://buttons.github.io/buttons.js\"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src=\"";
-        // line 453
+        // line 454
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/js/argon-dashboard.min.js"), "html", null, true);
         echo "?v=2.0.4\"></script>
 ";
@@ -428,7 +428,10 @@ class __TwigTemplate_215cfce197517939a201cdf2e8312265 extends Template
                     </a>
                 </li>
                 <li class=\"nav-item\">
-                    <a class=\"nav-link \" href=\"./pages/tables.html\">
+                    <a class=\"nav-link \" href=\"";
+        // line 51
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_user_index");
+        echo "\">
                         <div class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
                             <i class=\"ni ni-single-02 text-dark text-sm opacity-10\"></i>
                         </div>
@@ -439,7 +442,8 @@ class __TwigTemplate_215cfce197517939a201cdf2e8312265 extends Template
                     <a class=\"nav-link \" href=\"";
         // line 59
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_subscription_index");
-        echo "\">                        <div class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
+        echo "\">
+                        <div class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
                             <i class=\"ni ni-credit-card text-success text-sm opacity-10\"></i>
                         </div>
                         <span class=\"nav-link-text ms-1\">Subscriptions</span>
@@ -516,7 +520,7 @@ class __TwigTemplate_215cfce197517939a201cdf2e8312265 extends Template
 
     }
 
-    // line 129
+    // line 130
     public function block_main($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -526,7 +530,7 @@ class __TwigTemplate_215cfce197517939a201cdf2e8312265 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "main"));
 
-        // line 130
+        // line 131
         echo "    <main class=\"main-content position-relative border-radius-lg \">
         <!-- Navbar -->
         <nav class=\"navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl \" id=\"navbarBlur\"
@@ -581,7 +585,7 @@ class __TwigTemplate_215cfce197517939a201cdf2e8312265 extends Template
                                         <div class=\"d-flex py-1\">
                                             <div class=\"my-auto\">
                                                 <img src=\"";
-        // line 183
+        // line 184
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/img/team-2.jpg"), "html", null, true);
         echo "\"
                                                      class=\"avatar avatar-sm  me-3 \"></div>
@@ -602,7 +606,7 @@ class __TwigTemplate_215cfce197517939a201cdf2e8312265 extends Template
                                         <div class=\"d-flex py-1\">
                                             <div class=\"my-auto\">
                                                 <img src=\"";
-        // line 201
+        // line 202
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("back-office/img/small-logos/logo-spotify.svg"), "html", null, true);
         echo "\"
                                                      class=\"avatar avatar-sm bg-gradient-dark  me-3 \"></div>
@@ -692,7 +696,7 @@ class __TwigTemplate_215cfce197517939a201cdf2e8312265 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  606 => 201,  585 => 183,  530 => 130,  520 => 129,  441 => 59,  422 => 43,  411 => 35,  406 => 32,  396 => 31,  384 => 453,  285 => 357,  281 => 356,  277 => 355,  273 => 354,  269 => 353,  174 => 260,  172 => 129,  169 => 128,  167 => 31,  162 => 28,  152 => 27,  140 => 22,  135 => 20,  129 => 17,  125 => 16,  120 => 13,  110 => 12,  91 => 10,  79 => 455,  77 => 27,  72 => 24,  70 => 12,  67 => 11,  65 => 10,  60 => 8,  56 => 7,  48 => 1,);
+        return array (  610 => 202,  589 => 184,  534 => 131,  524 => 130,  444 => 59,  433 => 51,  422 => 43,  411 => 35,  406 => 32,  396 => 31,  384 => 454,  285 => 358,  281 => 357,  277 => 356,  273 => 355,  269 => 354,  174 => 261,  172 => 130,  169 => 129,  167 => 31,  162 => 28,  152 => 27,  140 => 22,  135 => 20,  129 => 17,  125 => 16,  120 => 13,  110 => 12,  91 => 10,  79 => 456,  77 => 27,  72 => 24,  70 => 12,  67 => 11,  65 => 10,  60 => 8,  56 => 7,  48 => 1,);
     }
 
     public function getSourceContext()
@@ -747,7 +751,7 @@ class __TwigTemplate_215cfce197517939a201cdf2e8312265 extends Template
                     </a>
                 </li>
                 <li class=\"nav-item\">
-                    <a class=\"nav-link \" href=\"./pages/tables.html\">
+                    <a class=\"nav-link \" href=\"{{ path('app_user_index') }}\">
                         <div class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
                             <i class=\"ni ni-single-02 text-dark text-sm opacity-10\"></i>
                         </div>
@@ -755,7 +759,8 @@ class __TwigTemplate_215cfce197517939a201cdf2e8312265 extends Template
                     </a>
                 </li>
                 <li class=\"nav-item\">
-                    <a class=\"nav-link \" href=\"{{ path('app_subscription_index') }}\">                        <div class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
+                    <a class=\"nav-link \" href=\"{{ path('app_subscription_index') }}\">
+                        <div class=\"icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center\">
                             <i class=\"ni ni-credit-card text-success text-sm opacity-10\"></i>
                         </div>
                         <span class=\"nav-link-text ms-1\">Subscriptions</span>

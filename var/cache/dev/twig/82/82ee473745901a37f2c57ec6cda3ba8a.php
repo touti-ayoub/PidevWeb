@@ -118,7 +118,6 @@ class __TwigTemplate_59b85cc5b7e601d2d685f4b3030565a1 extends Template
             <table class=\"table align-items-center\">
                 <thead>
                 <tr style=\"text-align: center\">
-                    <th>Id</th>
                     <th>Name</th>
                     <th>Type</th>
                     <th>Price</th>
@@ -127,37 +126,33 @@ class __TwigTemplate_59b85cc5b7e601d2d685f4b3030565a1 extends Template
                 </thead>
                 <tbody>
                 ";
-        // line 23
+        // line 22
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["subscriptions"]) || array_key_exists("subscriptions", $context) ? $context["subscriptions"] : (function () { throw new RuntimeError('Variable "subscriptions" does not exist.', 23, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["subscriptions"]) || array_key_exists("subscriptions", $context) ? $context["subscriptions"] : (function () { throw new RuntimeError('Variable "subscriptions" does not exist.', 22, $this->source); })()));
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["subscription"]) {
-            // line 24
+            // line 23
             echo "                    <tr style=\"text-align: center\">
                         <td>";
+            // line 24
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["subscription"], "name", [], "any", false, false, false, 24), "html", null, true);
+            echo "</td>
+                        <td>";
             // line 25
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["subscription"], "id", [], "any", false, false, false, 25), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["subscription"], "type", [], "any", false, false, false, 25), "html", null, true);
             echo "</td>
                         <td>";
             // line 26
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["subscription"], "name", [], "any", false, false, false, 26), "html", null, true);
-            echo "</td>
-                        <td>";
-            // line 27
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["subscription"], "type", [], "any", false, false, false, 27), "html", null, true);
-            echo "</td>
-                        <td>";
-            // line 28
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["subscription"], "price", [], "any", false, false, false, 28), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["subscription"], "price", [], "any", false, false, false, 26), "html", null, true);
             echo "</td>
                         <td>
                             <a href=\"";
-            // line 30
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_subscription_show", ["id" => twig_get_attribute($this->env, $this->source, $context["subscription"], "id", [], "any", false, false, false, 30)]), "html", null, true);
+            // line 28
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_subscription_show", ["id" => twig_get_attribute($this->env, $this->source, $context["subscription"], "id", [], "any", false, false, false, 28)]), "html", null, true);
             echo "\">show</a>
                             <a href=\"";
-            // line 31
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_subscription_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["subscription"], "id", [], "any", false, false, false, 31)]), "html", null, true);
+            // line 29
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_subscription_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["subscription"], "id", [], "any", false, false, false, 29)]), "html", null, true);
             echo "\">edit</a>
                         </td>
                     </tr>
@@ -165,7 +160,7 @@ class __TwigTemplate_59b85cc5b7e601d2d685f4b3030565a1 extends Template
             $context['_iterated'] = true;
         }
         if (!$context['_iterated']) {
-            // line 35
+            // line 33
             echo "                    <tr>
                         <td colspan=\"5\">no records found</td>
                     </tr>
@@ -174,11 +169,11 @@ class __TwigTemplate_59b85cc5b7e601d2d685f4b3030565a1 extends Template
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['subscription'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 39
+        // line 37
         echo "                </tbody>
             </table>
             <a href=\"";
-        // line 41
+        // line 39
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_subscription_new");
         echo "\" class=\"btn btn-primary\">Create new</a>
         </div>
@@ -213,7 +208,7 @@ class __TwigTemplate_59b85cc5b7e601d2d685f4b3030565a1 extends Template
      */
     public function getDebugInfo()
     {
-        return array (  182 => 41,  178 => 39,  169 => 35,  160 => 31,  156 => 30,  151 => 28,  147 => 27,  143 => 26,  139 => 25,  136 => 24,  131 => 23,  112 => 8,  102 => 7,  89 => 5,  79 => 4,  60 => 3,  37 => 1,);
+        return array (  177 => 39,  173 => 37,  164 => 33,  155 => 29,  151 => 28,  146 => 26,  142 => 25,  138 => 24,  135 => 23,  130 => 22,  112 => 8,  102 => 7,  89 => 5,  79 => 4,  60 => 3,  37 => 1,);
     }
 
     public function getSourceContext()
@@ -232,7 +227,6 @@ class __TwigTemplate_59b85cc5b7e601d2d685f4b3030565a1 extends Template
             <table class=\"table align-items-center\">
                 <thead>
                 <tr style=\"text-align: center\">
-                    <th>Id</th>
                     <th>Name</th>
                     <th>Type</th>
                     <th>Price</th>
@@ -242,7 +236,6 @@ class __TwigTemplate_59b85cc5b7e601d2d685f4b3030565a1 extends Template
                 <tbody>
                 {% for subscription in subscriptions %}
                     <tr style=\"text-align: center\">
-                        <td>{{ subscription.id }}</td>
                         <td>{{ subscription.name }}</td>
                         <td>{{ subscription.type }}</td>
                         <td>{{ subscription.price }}</td>

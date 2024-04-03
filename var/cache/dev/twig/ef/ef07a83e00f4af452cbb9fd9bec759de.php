@@ -160,7 +160,10 @@ class __TwigTemplate_7ed69959106226ef4e0a706ab541f7dd extends Template
                                 <div class=\"card-footer text-center pt-0 px-lg-2 px-1\">
                                     <p class=\"mb-4 text-sm mx-auto\">
                                         Don't have an account?
-                                        <a href=\"javascript:;\" class=\"text-primary text-gradient font-weight-bold\">Sign up</a>
+                                        <a href=\"";
+        // line 47
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
+        echo "\" class=\"text-primary text-gradient font-weight-bold\">Sign up</a>
                                     </p>
                                 </div>
                             </div>
@@ -230,7 +233,7 @@ class __TwigTemplate_7ed69959106226ef4e0a706ab541f7dd extends Template
      */
     public function getDebugInfo()
     {
-        return array (  200 => 67,  190 => 66,  153 => 38,  140 => 28,  137 => 27,  131 => 25,  129 => 24,  113 => 10,  103 => 9,  90 => 6,  80 => 5,  61 => 3,  38 => 1,);
+        return array (  203 => 67,  193 => 66,  165 => 47,  153 => 38,  140 => 28,  137 => 27,  131 => 25,  129 => 24,  113 => 10,  103 => 9,  90 => 6,  80 => 5,  61 => 3,  38 => 1,);
     }
 
     public function getSourceContext()
@@ -281,7 +284,7 @@ class __TwigTemplate_7ed69959106226ef4e0a706ab541f7dd extends Template
                                 <div class=\"card-footer text-center pt-0 px-lg-2 px-1\">
                                     <p class=\"mb-4 text-sm mx-auto\">
                                         Don't have an account?
-                                        <a href=\"javascript:;\" class=\"text-primary text-gradient font-weight-bold\">Sign up</a>
+                                        <a href=\"{{ path('app_register') }}\" class=\"text-primary text-gradient font-weight-bold\">Sign up</a>
                                     </p>
                                 </div>
                             </div>

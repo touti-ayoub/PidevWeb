@@ -1,0 +1,3 @@
+<?php //App%255CEntity%255CFood%2523getCarbohydrates
+
+return [PHP_INT_MAX, []];

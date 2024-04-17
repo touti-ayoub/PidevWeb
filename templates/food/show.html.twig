@@ -1,0 +1,61 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Food
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+{% block body %}
+	{{ parent() }}
+
+
+	<div class="card" style="width: 50rem; margin-left: 370px; margin-top: 100px">
+
+
+		<div class="card-body">
+			<h5 class="card-title">Food</h5>
+
+			<table class="table">
+				<tbody>
+					<tr>
+						<th>Id</th>
+						<td>{{ food.id }}</td>
+					</tr>
+					<tr>
+						<th>Name</th>
+						<td>{{ food.name }}</td>
+					</tr>
+					<tr>
+						<th>Calories</th>
+						<td>{{ food.calories }}</td>
+					</tr>
+					<tr>
+						<th>Protein</th>
+						<td>{{ food.protein }}</td>
+					</tr>
+					<tr>
+						<th>Carbohydrates</th>
+						<td>{{ food.carbohydrates }}</td>
+					</tr>
+					<tr>
+						<th>Fat</th>
+						<td>{{ food.fat }}</td>
+					</tr>
+					<tr>
+						<th>Serving_size</th>
+						<td>{{ food.servingSize }}</td>
+					</tr>
+					<tr>
+						<th>Serving_unit</th>
+						<td>{{ food.servingUnit }}</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<a href="{{ path('app_food_index') }}">back to list</a>
+
+			<a href="{{ path('app_food_edit', {'id': food.id}) }}">edit</a>
+
+			{{ include('food/_delete_form.html.twig') }}
+		{% endblock %}

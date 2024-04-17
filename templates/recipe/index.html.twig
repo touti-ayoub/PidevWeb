@@ -1,0 +1,54 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Recipe index
+{% endblock  %}
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+{% block body %}
+	{{ parent() }}
+
+
+	<div class="card" style="width: 50rem; margin-left: 370px; margin-top: 100px">
+
+
+		<div class="card-body">
+			<h5 class="card-title">Recipe index</h5>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>TotalCalories</th>
+						<th>TotalProtein</th>
+						<th>TotalCarbs</th>
+						<th>TotalFat</th>
+						<th>actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for recipe in recipes %}
+						<tr>
+							
+							<td>{{ recipe.name }}</td>
+							<td>{{ recipe.totalCalories }}</td>
+							<td>{{ recipe.totalProtein }}</td>
+							<td>{{ recipe.totalCarbs }}</td>
+							<td>{{ recipe.totalFat }}</td>
+							<td>
+								<a href="{{ path('app_recipe_show', {'id': recipe.id}) }}">show</a>
+								<a href="{{ path('app_recipe_edit', {'id': recipe.id}) }}">edit</a>
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="7">no records found</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			<a href="{{ path('app_recipe_new') }}">Create new</a>
+		</div>
+	</div>
+
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Food index
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	{{ parent() }}
+
+	<div class="card" style="width: 68rem; margin-left: 370px; margin-top: 100px">
+		<div class="card-body">
+			<h5 class="card-title">Food index</h5>
+			<div
+				class="table-responsive">
+				<!-- Utilisation de table-responsive pour la gestion de la scrollbar -->
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Calories</th>
+							<th>Protein</th>
+							<th>Carbohydrates</th>
+							<th>Fat</th>
+							<th>Serving_size</th>
+							<th>Serving_unit</th>
+							<th>actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for food in food %}
+							<tr>
+								<td>{{ food.name }}</td>
+								<td>{{ food.calories }}</td>
+								<td>{{ food.protein }}</td>
+								<td>{{ food.carbohydrates }}</td>
+								<td>{{ food.fat }}</td>
+								<td>{{ food.servingSize }}</td>
+								<td>{{ food.servingUnit }}</td>
+								<td>
+									<a href="{{ path('app_food_show', {'id': food.id}) }}">show</a>
+									<a href="{{ path('app_food_edit', {'id': food.id}) }}">edit</a>
+								</td>
+							</tr>
+						{% else %}
+							<tr>
+								<td colspan="8">no records found</td>
+								<!-- Colspan correspond au nombre total de colonnes -->
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+			<a href="{{ path('app_food_new') }}">Create new</a>
+		</div>
+	</div>
+{% endblock %}

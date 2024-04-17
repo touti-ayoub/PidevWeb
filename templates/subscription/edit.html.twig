@@ -19,20 +19,10 @@
             width: 700px; /* Adjust as needed */
             height: 60px; /* Adjust as needed */
         }
-
-        .btn {
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-        }
     </style>
 
     <div class="card" style="width: 50rem; margin-left: 500px; margin-top: 100px">
-        <div class="card-body">
+        <div class="card-body" style="display: flex; flex-direction: column; align-items: center;">
             <h5 class="card-title">Edit Subscription</h5>
             <form method="post">
                 {{ form_start(form) }}
@@ -51,8 +41,14 @@
                     {{ form_widget(form.price, {'attr': {'class': 'form-control'}}) }}
                     {{ form_errors(form.price) }}
                 </div>
-                <button type="submit" class="btn btn-primary">Update</button>
-                <a href="{{ path('app_subscription_index') }}" class="btn btn-secondary">Back to List</a>
+                <div style="display: flex; justify-content: center; width: 100%;">
+                    <a href="#" onclick="this.closest('form').submit()">
+                        <img src="{{ asset('back-office/img/save.png') }}" alt="Update" style="width: 43px; height: 43px;">
+                    </a>
+                    <a href="{{ path('app_subscription_index') }}">
+                        <img src="{{ asset('back-office/img/back.png') }}" alt="Back to list" style="margin-left: 15px; width: 40px; height: 40px;">
+                    </a>
+                </div>
                 {{ form_end(form) }}
             </form>
         </div>

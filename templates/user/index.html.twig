@@ -6,27 +6,31 @@
 {% endblock %}
 {% block body %}
     {{ parent() }}
-<div class="card" style="width: 50rem; margin-left: 500px; margin-top: 100px">
+<div class="card" style="width: 60rem; margin-left: 420px; margin-top: 100px">
     <div class="card-body">
         <h5 class="card-title">Users</h5>
         <table class="table align-items-center">
         <thead>
-            <tr>
+            <tr align="center">
                 <th>Email</th>
                 <th>Roles</th>
-                <th>IsVerified</th>
+                <th>Verified</th>
+                <th>Banned</th>
+                <th>Deleted</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for user in users %}
-            <tr>
+            <tr align="center">
                 <td>{{ user.email }}</td>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
                 <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
+                <td>{{ user.isBanned ? 'Yes' : 'No' }}</td>
+                <td>{{ user.isDeleted ? 'Yes' : 'No' }}</td>
                 <td>
-                    <a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+                    <a href="{{ path('app_user_show', {'id': user.id}) }}"><img src="{{ asset('back-office/img/view.png') }}" alt="Show" style="margin-left: 20px; width: 30px; height: 30px;"></a>
+                    <a href="{{ path('app_user_edit', {'id': user.id}) }}"><img src="{{ asset('back-office/img/edit.png') }}" alt="Edit" style="width: 30px; height: 30px;"></a>
                 </td>
             </tr>
         {% else %}

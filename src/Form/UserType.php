@@ -18,12 +18,10 @@ class UserType extends AbstractType
                 'choices' => [
                     'User' => 'ROLE_USER',
                     'Admin' => 'ROLE_ADMIN',
-                    // Add more roles here if needed
                 ],
                 'multiple' => true,
                 'expanded' => true,
             ])
-            // Removed password field
             ->add('isVerified', ChoiceType::class, [
                 'choices' => [
                     'Yes' => true,
@@ -31,7 +29,20 @@ class UserType extends AbstractType
                 ],
                 'expanded' => true,
             ])
-        ;
+            ->add('isBanned', ChoiceType::class, [
+                'choices' => [
+                    'Yes' => true,
+                    'No' => false,
+                ],
+                'expanded' => true,
+            ])
+            ->add('isDeleted', ChoiceType::class, [
+                'choices' => [
+                    'Yes' => true,
+                    'No' => false,
+                ],
+                'expanded' => true,
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

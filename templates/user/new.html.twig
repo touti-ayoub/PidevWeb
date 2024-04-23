@@ -33,7 +33,7 @@
 
 {% block body %}
     {{ parent() }}
-    <div class="card" style="width: 50rem; margin-left: 500px; margin-top: 100px">
+    <div class="card" style="width: 50rem; height: 38rem; margin-left: 500px; margin-top: 100px">
         <div class="card-body">
             <h5 class="card-title">Create new User</h5>
             {{ form_start(form) }}
@@ -42,6 +42,10 @@
                 {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
                 {{ form_errors(form.email) }}
             </div>
+<div class="form-group">
+                {{ form_label(form.password) }}
+                {{ form_widget(form.password, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.password) }}
             <div class="form-group">
                 {{ form_label(form.roles) }}
                 {{ form_widget(form.roles, {'attr': {'class': 'form-control'}}) }}
@@ -52,6 +56,17 @@
                 {{ form_widget(form.isVerified, {'attr': {'class': 'form-control'}}) }}
                 {{ form_errors(form.isVerified) }}
             </div>
+            <div class="form-group">
+                {{ form_label(form.isBanned) }}
+                {{ form_widget(form.isBanned, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.isBanned) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.isDeleted) }}
+                {{ form_widget(form.isDeleted, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.isDeleted) }}
+            </div>
+    <br>
             <button class="btn btn-primary">Save</button>
             <a href="{{ path('app_user_index') }}" class="btn btn-secondary">Back to List</a>
             {{ form_end(form) }}

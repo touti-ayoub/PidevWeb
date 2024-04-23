@@ -7,6 +7,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class UserType extends AbstractType
@@ -15,7 +17,6 @@ class UserType extends AbstractType
     {
         $builder
             ->add('email')
-            ->add('password', PasswordType::class)
             ->add('roles', ChoiceType::class, [
                 'choices' => [
                     'User' => 'ROLE_USER',
@@ -45,6 +46,15 @@ class UserType extends AbstractType
                 ],
                 'expanded' => true,
             ]);
+        $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
+            $user = $event->getData();
+            $form = $event->getForm();
+
+            // only add the password field if it's a new user
+            if (!$user || null === $user->getId()) {
+                $form->add('password');
+            }
+        });
     }
 
     public function configureOptions(OptionsResolver $resolver): void

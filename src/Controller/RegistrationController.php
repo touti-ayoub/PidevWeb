@@ -35,7 +35,7 @@ class RegistrationController extends AbstractController
         $user->setIsDeleted(false);
         $user->setIsBanned(false);
         $user->setIsVerified(false);
-        $user->setRoles(['ROLE_ADMIN']);
+        $user->setRoles(['ROLE_USER']);
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
@@ -63,11 +63,12 @@ class RegistrationController extends AbstractController
             }
 
             // Authenticate user
-            return $userAuthenticator->authenticateUser(
+            $userAuthenticator->authenticateUser(
                 $user,
                 $authenticator,
                 $request
             );
+            return $this->redirectToRoute('app_front');
         }
 
         return $this->render('registration/register.html.twig', [

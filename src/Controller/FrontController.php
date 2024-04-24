@@ -21,7 +21,7 @@ class FrontController extends AbstractController
     {
         $subscriptions = $this->subscriptionRepository->findAll();
 
-        return $this->render('front/index.html.twig', [
+        return $this->render('front/memberships.html.twig', [
             'subscriptions' => $subscriptions,
         ]);
     }

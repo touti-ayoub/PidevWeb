@@ -16,7 +16,7 @@ class FrontController extends AbstractController
         $this->subscriptionRepository = $subscriptionRepository;
     }
 
-    #[Route('/front', name: 'app_front')]
+    #[Route('/membership', name: 'app_front')]
     public function index(): Response
     {
         $subscriptions = $this->subscriptionRepository->findAll();

@@ -48,8 +48,7 @@
                                 <ul class="list-unstyled lh-35 mb-4">
                                     <li class="text-black font-weight-bold"><i class="ti-check mr-3 text-color "></i>{{ subscription.type }}</li>
                                 </ul>
-                                <a href="#" class="btn btn-solid-border text-black">Buy Now</a>
-                            </div>
+                                <a href="{{ path('checkout', { 'id': subscription.id }) }}" class="btn btn-solid-border text-black">Buy Now</a>                            </div>
                         </div>
                     </div>
                 {% endfor %}

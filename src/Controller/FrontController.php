@@ -16,8 +16,18 @@ class FrontController extends AbstractController
         $this->subscriptionRepository = $subscriptionRepository;
     }
 
-    #[Route('/membership', name: 'app_front')]
+    #[Route('/main', name: 'app_main')]
     public function index(): Response
+    {
+        $subscriptions = $this->subscriptionRepository->findAll();
+
+        return $this->render('front/main.html.twig', [
+            'subscriptions' => $subscriptions,
+        ]);
+    }
+
+    #[Route('/membership', name: 'app_membership')]
+    public function membership(): Response
     {
         $subscriptions = $this->subscriptionRepository->findAll();
 

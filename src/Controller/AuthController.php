@@ -9,7 +9,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class AuthController extends AbstractController
 {
-    #[Route(path: '/login', name: 'app_login')]
+    #[Route(path: '/admin/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         if ($this->getUser()) {
@@ -17,7 +17,7 @@ class AuthController extends AbstractController
                 return $this->redirectToRoute('app_banned');
             }
             // Redirect to target path after successful login
-            return $this->redirectToRoute('target_path');
+            return $this->redirectToRoute('app_dashboard');
         }
 
         // get the login error if there is one

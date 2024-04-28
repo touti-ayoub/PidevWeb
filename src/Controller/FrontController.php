@@ -16,6 +16,12 @@ class FrontController extends AbstractController
         $this->subscriptionRepository = $subscriptionRepository;
     }
 
+    #[Route('/banned', name: 'app_banned')]
+    public function banned(): Response
+    {
+        return $this->render('front/banned.html.twig');
+    }
+
     #[Route('/main', name: 'app_main')]
     public function index(): Response
     {

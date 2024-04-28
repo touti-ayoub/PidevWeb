@@ -32,11 +32,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
 
-    #[ORM\Column]
-    private ?bool $isBanned = null;
+    #[ORM\Column(type: "boolean", options: ["default" => false])]
+    private bool $isBanned = false;
 
-    #[ORM\Column]
-    private ?bool $isDeleted = null;
+    #[ORM\Column(type: "boolean", options: ["default" => false])]
+    private ?bool $isDeleted = false;
 
     public function getId(): ?int
     {

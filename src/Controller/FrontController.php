@@ -22,6 +22,12 @@ class FrontController extends AbstractController
         return $this->render('front/banned.html.twig');
     }
 
+    #[Route('/deleted', name: 'app_deleted')]
+    public function deleted(): Response
+    {
+        return $this->render('front/deleted.html.twig');
+    }
+
     #[Route('/main', name: 'app_main')]
     public function index(): Response
     {

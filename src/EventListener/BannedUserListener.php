@@ -26,7 +26,7 @@ class BannedUserListener
         $currentRoute = $event->getRequest()->attributes->get('_route');
 
         // If the current route is the login page or the banned page, do not perform the ban check
-        if ($currentRoute === 'app_login' || $currentRoute === 'app_banned') {
+        if ($currentRoute === 'app_login' || $currentRoute === 'app_banned' || $currentRoute === 'app_register' || $currentRoute === 'app_deleted') {
             return;
         }
 
@@ -40,6 +40,11 @@ class BannedUserListener
         // If the user is logged in and banned, redirect them to the banned page
         if ($user && $user->isIsBanned()) {
             $event->setResponse(new RedirectResponse($this->router->generate('app_banned')));
+        }
+
+        // If the user is marked as deleted, redirect them to the deleted account page
+        if ($user && $user->isIsDeleted()) {
+            $event->setResponse(new RedirectResponse($this->router->generate('app_deleted')));
         }
     }
 }

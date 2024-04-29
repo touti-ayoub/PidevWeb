@@ -6,6 +6,7 @@ use App\Repository\SubscriptionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\User;
 
 class FrontController extends AbstractController
 {
@@ -35,6 +36,23 @@ class FrontController extends AbstractController
 
         return $this->render('front/main.html.twig', [
             'subscriptions' => $subscriptions,
+        ]);
+    }
+
+    #[Route('/profile', name: 'app_profile')]
+    public function profile(): Response
+    {
+        // Fetch the user data. Here, I'm assuming that you want to fetch the data of the currently logged-in user.
+        $user = $this->getUser();
+
+        // If the user is not logged in, redirect them to the login page.
+        if (!$user) {
+            return $this->redirectToRoute('app_login');
+        }
+
+        // Pass the user data to the template.
+        return $this->render('front/profile.html.twig', [
+            'user' => $user,
         ]);
     }
 

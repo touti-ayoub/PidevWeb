@@ -38,6 +38,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: "boolean", options: ["default" => false])]
     private ?bool $isDeleted = false;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $name = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $age = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $height = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $weight = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $profileImage= null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -159,6 +174,66 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setIsDeleted(bool $isDeleted): static
     {
         $this->isDeleted = $isDeleted;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(?string $name): static
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getAge(): ?int
+    {
+        return $this->age;
+    }
+
+    public function setAge(?int $age): static
+    {
+        $this->age = $age;
+
+        return $this;
+    }
+
+    public function getHeight(): ?int
+    {
+        return $this->height;
+    }
+
+    public function setHeight(?int $height): static
+    {
+        $this->height = $height;
+
+        return $this;
+    }
+
+    public function getWeight(): ?int
+    {
+        return $this->weight;
+    }
+
+    public function setWeight(?int $weight): static
+    {
+        $this->weight = $weight;
+
+        return $this;
+    }
+
+    public function getProfileImage(): ?string
+    {
+        return $this->profileImage;
+    }
+
+    public function setProfileImage(?string $profileImage): static
+    {
+        $this->profileImage = $profileImage;
 
         return $this;
     }

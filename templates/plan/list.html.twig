@@ -1,0 +1,111 @@
+{% extends 'base-back.html.twig' %}
+{% block title %}New Exercice{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        input.form-control{
+            border: none;
+            border-bottom: 1px solid #ccc;
+            box-shadow: none;
+            border-radius: 0;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    {{ parent() }}
+    <style>
+        .delete {
+
+            border: none;
+        }
+        .settings {
+            border: none;
+        }
+        .show {
+            border: none;
+        }
+        .avatar {
+            border-radius: 50%;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        .table {
+            table-layout: fixed;
+            width: 100%; /* Adjust as needed */
+        }
+        .table td {
+            width: auto; /* Adjust as needed */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    </style>
+    <div>
+        <div>
+            <div class="card" style="width: 50rem; margin-left: 420px; margin-top: 100px">
+                <div class="card-body">
+                    <h5 class="card-title">Management plans</h5>
+                <div class="table-responsive">
+                    <div class="table-wrapper">
+                        <table class="table table-striped table-hover">
+                            <thead style="text-align: center">
+                            <tr>
+                                <th>Nom</th>
+                                <th>Description</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for plan in plans %}
+                                <tr style="text-align: center; vertical-align: middle" >
+
+                                    <td style="text-align: left">
+                                        <a href="#">
+                                            {% if plan.getImageurl %}
+                                                <img src="{{ asset('uploads/' ~ plan.getImageurl) }}" class="avatar" alt="Plan image">
+                                            {% else %}
+                                                <img src="/examples/images/avatar/1.jpg" class="avatar" alt="Default Avatar">
+                                            {% endif %}
+                                            {{ plan.getNomP }}
+                                        </a>
+                                    </td>
+                                    <td>{{ plan.getDescriptionP }}</td>
+
+                                    <td>
+                                        <form method="post" style="display: inline-block" action="{{ path('plan_edit', {'id': plan.getId}) }}" onsubmit="return confirm('Are you sure you want to edit this plan?'); ">
+                                            <input type="hidden" name="_method" value="POST">
+                                            <input type="hidden" name="_token" value="{{ csrf_token('edit' ~ plan.getId) }}">
+                                            <button class="settings" title="Settings" data-toggle="tooltip"><img src="/back-office/img/edit.png" style="height: 32px" alt="Edit"></button>
+                                        </form>
+                                        <form method="post" style="display: inline-block" action="{{ path('plan_delete', {'id': plan.getId}) }}" onsubmit="return confirm('Are you sure you want to delete this plan?');">
+                                            <input type="hidden" name="_method" value="POST">
+                                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ plan.getId) }}">
+                                            <button class="delete" title="Delete" data-toggle="tooltip"><img src="/back-office/img/delete.png" class="button-image" style="height: 35px" alt="Edit">
+                                            </button>
+                                        </form>
+                                        <form method="get" action="{{ path('plan_show', {'id': plan.getId}) }}" style="display: inline-block;">
+                                            <button class="show" title="Show" data-toggle="tooltip">
+                                                <img src="/back-office/img/view.png" class="button-image" style="height: 30px" alt="Show">
+                                            </button>
+                                        </form>
+                                    </td>
+
+
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        <a href="{{ path('plan_new') }}" style="display: flex; justify-content: center;">
+                            <img src="{{ asset('back-office/img/add.png') }}" alt="add" style="width: 60px; height: 60px;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+{% endblock %}

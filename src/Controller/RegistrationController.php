@@ -9,6 +9,7 @@ use App\Security\LoginFormAuthenticator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mime\Address;
@@ -18,14 +19,17 @@ use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 use Psr\Log\LoggerInterface;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class RegistrationController extends AbstractController
 {
     private EmailVerifier $emailVerifier;
+    private SluggerInterface $slugger;
 
-    public function __construct(EmailVerifier $emailVerifier)
+    public function __construct(EmailVerifier $emailVerifier, SluggerInterface $slugger)
     {
         $this->emailVerifier = $emailVerifier;
+        $this->slugger = $slugger;
     }
 
     #[Route('/register', name: 'app_register')]
@@ -40,6 +44,24 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // handle the profile image upload
+            $profileImageFile = $form->get('profileImage')->getData();
+            if ($profileImageFile) {
+                $originalFilename = pathinfo($profileImageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $this->slugger->slug($originalFilename)->lower();                $newFilename = $safeFilename.'-'.uniqid().'.'.$profileImageFile->guessExtension();
+
+                try {
+                    $profileImageFile->move(
+                        $this->getParameter('profile_image_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                $user->setProfileImage($newFilename);
+            }
+
             $user->setPassword($userPasswordHasher->hashPassword(
                 $user,
                 $form->get('plainPassword')->getData()

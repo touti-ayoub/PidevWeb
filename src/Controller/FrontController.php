@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Plan;
 use App\Repository\SubscriptionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -63,6 +64,18 @@ class FrontController extends AbstractController
 
         return $this->render('front/memberships.html.twig', [
             'subscriptions' => $subscriptions,
+        ]);
+    }
+
+    #[Route('/user/plans', name: 'app_plan')]
+    public function plan(): Response
+    {
+        // Fetch only the first four plans
+        $plans = $this->getDoctrine()->getRepository(Plan::class)->findBy([], null, 4);
+
+        return $this->render('front/allPlans.html.twig', [
+            'plans' => $plans,
+            'limited' => true,  // This indicates that the view is limited
         ]);
     }
 }

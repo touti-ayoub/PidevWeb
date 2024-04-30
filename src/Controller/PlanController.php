@@ -15,6 +15,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Psr\Log\LoggerInterface;
+
 
 
 
@@ -22,13 +25,6 @@ class PlanController extends AbstractController
 
 {
 
-    #[Route('/plan', name: 'app_plan')]
-    public function index(): Response
-    {
-        return $this->render('plan/index.html.twig', [
-            'controller_name' => 'PlanController',
-        ]);
-    }
     /**
      * @Route("/plan/new", name="plan_new", methods={"GET","POST"})
      */
@@ -179,4 +175,49 @@ class PlanController extends AbstractController
             'plan' => $plan,
         ]);
     }
+
+    /**
+     * @Route("/plan/{planId}/like", name="plan_like", methods={"POST"})
+     */
+    public function likePlan(Request $request, int $planId): JsonResponse
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $plan = $entityManager->getRepository(Plan::class)->find($planId);
+        $user = $this->getUser();
+
+        if (!$plan) {
+            return new JsonResponse(['success' => false, 'message' => 'Plan not found'], 404);
+        }
+
+        if (!$user) {
+            return new JsonResponse(['success' => false, 'message' => 'User not authenticated'], 401);
+        }
+
+        try {
+            $user->addLikedPlan($plan);
+            $entityManager->flush();
+        } catch (\Exception $e) {
+            $logger->error('Failed to like a plan: ' . $e->getMessage());
+            return new JsonResponse(['success' => false, 'message' => 'Server error'], 500);
+        }
+
+        return new JsonResponse(['success' => true, 'message' => 'Plan liked successfully']);
+    }
+
+
+    /**
+     * @Route("/plan/{id}/unlike", name="plan_unlike", methods={"POST"})
+     */
+    public function unlikePlan(int $planId): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $plan = $entityManager->getRepository(Plan::class)->find($planId);
+        $user = $this->getUser(); // Assuming you have some way to get the authenticated user
+
+        $user->removeLikedPlan($plan);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_profile');
+    }
+
 }

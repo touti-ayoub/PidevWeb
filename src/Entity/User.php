@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -52,6 +54,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $profileImage= null;
+
+    #[ORM\ManyToMany(targetEntity: Plan::class, inversedBy: 'usersWhoLiked')]
+    private Collection $likedPlans;
+
+    public function __construct()
+    {
+        $this->likedPlans = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -234,6 +244,37 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setProfileImage(?string $profileImage): static
     {
         $this->profileImage = $profileImage;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Plan>
+     */
+    public function getLikedPlans(): Collection
+    {
+        return $this->likedPlans;
+    }
+
+    public function addLikedPlan(Plan $likedPlan): static
+    {
+        if (!$this->likedPlans->contains($likedPlan)) {
+            $this->likedPlans->add($likedPlan);
+            $likedPlan->addUsersWhoLiked($this); // Ensure the bidirectional relationship is maintained
+        }
+
+        return $this;
+    }
+
+    public function removeLikedPlan(Plan $plan): self
+    {
+        if ($this->likedPlans->contains($plan)) {
+            $this->likedPlans->removeElement($plan);
+            // Also remove this user from the plan's usersWhoLiked collection if it's still there
+            if ($plan->getUsersWhoLiked()->contains($this)) {
+                $plan->removeUsersWhoLiked($this);
+            }
+        }
 
         return $this;
     }

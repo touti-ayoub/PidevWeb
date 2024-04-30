@@ -65,7 +65,7 @@
                     {{ form_label(form.imageFile) }}
                     {{ form_widget(form.imageFile, {'attr': {'class': 'form-control'}}) }}
                     {% if plan.getImageurl %}
-                        <img src="{{ asset('uploads/' ~ plan.getImageurl) }}" alt="Exercice image" style="max-width: 200px !important; max-height: 200px !important ;margin-left: 100px;margin-top: 100px">
+                        <img src="{{ asset('images/' ~ plan.getImageurl) }}" alt="Exercice image" style="max-width: 200px !important; max-height: 200px !important ;margin-left: 100px;margin-top: 100px">
                     {% endif %}
                     <div class="error">
                         {{ form_errors(form.imageFile) }}

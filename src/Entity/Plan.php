@@ -40,6 +40,7 @@ class Plan
     {
         $this->exercices = new ArrayCollection();
         $this->createdAt = new \DateTime(); // This sets the creation date to the current time by default
+        $this->usersWhoLiked = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -96,6 +97,9 @@ class Plan
     #[ORM\Column(type: 'datetime')]
     private ?\DateTimeInterface $createdAt = null;
 
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'likedPlans')]
+    private Collection $usersWhoLiked;
+
     public function getImageFile(): ?File
     {
         return $this->imageFile;
@@ -150,18 +154,34 @@ class Plan
         return $this;
     }
 
-#[ORM\Column(type: 'boolean')]
-private $updated = false;
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUsersWhoLiked(): Collection
+    {
+        return $this->usersWhoLiked;
+    }
 
-public function getUpdated(): ?bool
-{
-    return $this->updated;
-}
+    public function addUsersWhoLiked(User $usersWhoLiked): static
+    {
+        if (!$this->usersWhoLiked->contains($usersWhoLiked)) {
+            $this->usersWhoLiked->add($usersWhoLiked);
+            $usersWhoLiked->addLikedPlan($this);
+        }
 
-public function setUpdated(bool $updated): self
-{
-    $this->updated = $updated;
+        return $this;
+    }
 
-    return $this;
-}
+    public function removeUsersWhoLiked(User $user): self
+    {
+        if ($this->usersWhoLiked->contains($user)) {
+            $this->usersWhoLiked->removeElement($user);
+            // Check if the user still references this plan and remove it if necessary
+            if ($user->getLikedPlans()->contains($this)) {
+                $user->removeLikedPlan($this);
+            }
+        }
+
+        return $this;
+    }
 }

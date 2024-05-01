@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Doctrine\Persistence\ManagerRegistry;
+use App\Entity\Plan;
 
 
 class ExerciceController extends AbstractController
@@ -162,6 +163,23 @@ class ExerciceController extends AbstractController
         return $this->render('exercice/edit.html.twig', [
             'form' => $form->createView(),
             'exercice' => $exercice,
+        ]);
+    }
+    #[Route('/main/exercises/{id}', name: 'app_exercises')]
+    public function showAllExercises($id): Response
+    {
+        $plan = $this->getDoctrine()->getRepository(Plan::class)->find($id);
+
+        if (!$plan) {
+            throw $this->createNotFoundException(
+                'No plan found for id '.$id
+            );
+        }
+
+        $exercises = $plan->getExercices();
+
+        return $this->render('front/planExercice.html.twig', [
+            'exercises' => $exercises,
         ]);
     }
 }

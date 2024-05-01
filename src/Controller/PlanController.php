@@ -219,6 +219,10 @@ class PlanController extends AbstractController
         if (!$user) {
             return new JsonResponse(['success' => false, 'message' => 'User not authenticated'], 401);
         }
+        // Check if the user has already liked this plan
+        if ($user->getLikedPlans()->contains($plan)) {
+            return new JsonResponse(['success' => false, 'message' => 'You have already liked this plan'], 409);
+        }
 
         try {
             $user->addLikedPlan($plan);

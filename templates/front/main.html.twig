@@ -1,0 +1,106 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Popular Courses{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .card {
+            display: flex;
+            flex-direction: column;
+            height: 500px;  /* Sets a fixed height for each card */
+            overflow: hidden;  /* Ensures content doesn't overflow */
+        }
+        .card img {
+            height: 70%;  /* Sets the image to take up 70% of the card's height */
+            width: 100%;  /* Image will fill the width of the card */
+            object-fit: cover;  /* Ensures the image covers the area nicely without distortion */
+        }
+        .card-body {
+            height: 30%;  /* Remaining height for the card body */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;  /* Distributes space inside the card-body */
+        }
+        .card-body h4, .card-body p {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;  /* Prevents text from wrapping */
+        }
+        .card-body p {
+            font-size: 0.9rem;  /* Smaller font size for the description */
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <!-- Section Slider Start -->
+    <section class="slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <span class="h6 d-inline-block mb-4 subhead text-uppercase">Gym fitness club</span>
+                    <h1 class="text-uppercase text-white mb-5">Step up your <span class="text-color">fitness challenge</span><br>with us</h1>
+                    <a href="pricing.html" target="_blank" class="btn btn-main ">Join Us <i class="ti-angle-right ml-3"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Section Slider End -->
+    <!-- Section Course Start -->
+    <section class="section course bg-gray">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="section-title">
+                        <div class="divider mb-3"></div>
+                        <h2>Popular Courses</h2>
+                        <p>We offer more than 35 group exercise and aerobic classes each week.</p>
+
+                        {# Example template to display flash messages with AJAX #}
+                        <div id="flash-messages-container"></div>
+                        <script>
+                            function displayFlashMessages() {
+                                fetch('{{ path('fetch_flash_messages') }}')
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        const container = document.getElementById('flash-messages-container');
+                                        container.innerHTML = ''; // Clear previous messages
+                                        data.forEach(message => {
+                                            const alertDiv = document.createElement('div');
+                                            alertDiv.classList.add('alert', 'alert-success');
+                                            alertDiv.textContent = message;
+                                            container.appendChild(alertDiv);
+                                        });
+                                    });
+                            }
+
+                            displayFlashMessages(); // Call the function when the page loads
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% for plan in plans %}
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card border-0 rounded-0 p-0 mb-5 mb-lg-0 shadow-sm">
+                            <img src="{{ asset('images/' ~ plan.imageurl) }}" alt="{{ plan.nomP }}" class="img-fluid">
+                            <div class="card-body">
+                                <a href="{{ path('plan_show', {'id': plan.id}) }}"><h4 class="font-secondary mb-0">{{ plan.nomP }}</h4></a>
+                                <p class="mb-2">{{ plan.descriptionP }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="mt-5 text-center">
+                        <a href="{{ path('app_plan') }}">Link Text</a>                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Section Course End -->
+{% endblock %}

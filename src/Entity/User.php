@@ -58,6 +58,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: Plan::class, inversedBy: 'usersWhoLiked')]
     private Collection $likedPlans;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $googleId = null;
+
     public function __construct()
     {
         $this->likedPlans = new ArrayCollection();
@@ -275,6 +278,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $plan->removeUsersWhoLiked($this);
             }
         }
+
+        return $this;
+    }
+
+    public function getGoogleId(): ?string
+    {
+        return $this->googleId;
+    }
+
+    public function setGoogleId(?string $googleId): static
+    {
+        $this->googleId = $googleId;
 
         return $this;
     }

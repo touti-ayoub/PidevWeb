@@ -31,7 +31,7 @@
                             <div class="card rounded-0 p-0">
                                 <img src="{{ asset('images/' ~ plan.imageurl) }}" alt="{{ plan.nomP }}" class="img-fluid">
                                 <div class="card-body">
-                                    <a href="{{ path('plan_show', {'id': plan.id}) }}"><h4 class="mt-3 mb-0">{{ plan.nomP }}</h4></a>
+                                    <a href="{{ path('app_exercises', {'id': plan.id}) }}"><h4 class="font-secondary mb-0">{{ plan.nomP }}</h4></a>
                                     <p class="mb-2">{{ plan.descriptionP }}</p>
                                     <button class="like-button" data-plan-id="{{ plan.id }}" data-csrf-token="{{ csrf_token('like' ~ plan.id) }}">Like</button>
                                 </div>

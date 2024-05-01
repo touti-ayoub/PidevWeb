@@ -8,27 +8,36 @@
         .card {
             display: flex;
             flex-direction: column;
-            height: 500px;  /* Sets a fixed height for each card */
-            overflow: hidden;  /* Ensures content doesn't overflow */
+            height: 500px; /* Sets a fixed height for each card */
+            overflow: hidden; /* Ensures content doesn't overflow */
         }
+
         .card img {
-            height: 70%;  /* Sets the image to take up 70% of the card's height */
-            width: 100%;  /* Image will fill the width of the card */
-            object-fit: cover;  /* Ensures the image covers the area nicely without distortion */
+            height: 70%; /* Sets the image to take up 70% of the card's height */
+            width: 100%; /* Image will fill the width of the card */
+            object-fit: cover; /* Ensures the image covers the area nicely without distortion */
         }
+
         .card-body {
-            height: 30%;  /* Remaining height for the card body */
+            height: 30%; /* Remaining height for the card body */
             display: flex;
             flex-direction: column;
-            justify-content: space-between;  /* Distributes space inside the card-body */
+            justify-content: space-between; /* Distributes space inside the card-body */
         }
+
         .card-body h4, .card-body p {
             overflow: hidden;
             text-overflow: ellipsis;
-            white-space: nowrap;  /* Prevents text from wrapping */
+            white-space: nowrap; /* Prevents text from wrapping */
         }
+
         .card-body p {
-            font-size: 0.9rem;  /* Smaller font size for the description */
+            font-size: 0.9rem; /* Smaller font size for the description */
+        }
+
+        .like-button img {
+            border: none;
+            outline: none;
         }
     </style>
 {% endblock %}
@@ -41,8 +50,10 @@
             <div class="row">
                 <div class="col-md-8">
                     <span class="h6 d-inline-block mb-4 subhead text-uppercase">Gym fitness club</span>
-                    <h1 class="text-uppercase text-white mb-5">Step up your <span class="text-color">fitness challenge</span><br>with us</h1>
-                    <a href="pricing.html" target="_blank" class="btn btn-main ">Join Us <i class="ti-angle-right ml-3"></i></a>
+                    <h1 class="text-uppercase text-white mb-5">Step up your <span
+                                class="text-color">fitness challenge</span><br>with us</h1>
+                    <a href="pricing.html" target="_blank" class="btn btn-main ">Join Us <i
+                                class="ti-angle-right ml-3"></i></a>
                 </div>
             </div>
         </div>
@@ -87,8 +98,13 @@
                         <div class="card border-0 rounded-0 p-0 mb-5 mb-lg-0 shadow-sm">
                             <img src="{{ asset('images/' ~ plan.imageurl) }}" alt="{{ plan.nomP }}" class="img-fluid">
                             <div class="card-body">
-                                <a href="{{ path('app_exercises', {'id': plan.id}) }}"><h4 class="font-secondary mb-0">{{ plan.nomP }}</h4></a>
+                                <a href="{{ path('app_exercises', {'id': plan.id}) }}"><h4
+                                            class="font-secondary mb-0">{{ plan.nomP }}</h4></a>
                                 <p class="mb-2">{{ plan.descriptionP }}</p>
+                                <button class="like-button" data-plan-id="{{ plan.id }}"
+                                        data-csrf-token="{{ csrf_token('like' ~ plan.id) }}" style="border: none;">
+                                    <img src="{{ asset('images/heart.png') }}" alt="Like" style="width: 30px; height: 30px; border: none;outline: none;">
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -99,8 +115,39 @@
                     <div class="mt-5 text-center">
                         <a href="{{ path('app_plan') }}">Link Text</a>
                     </div>
+                </div>
             </div>
+
         </div>
     </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const likeButtons = document.querySelectorAll('.like-button');
+            likeButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const planId = this.getAttribute('data-plan-id');
+                    const csrfToken = this.getAttribute('data-csrf-token'); // Retrieve CSRF token
+                    fetch('{{ path('plan_like', {'planId': 'ID'}) }}'.replace('ID', planId), {
+                        method: 'POST',
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'X-CSRF-Token': csrfToken, // Pass CSRF token in the request header
+                            'Content-Type': 'application/json',
+                        },
+                        credentials: 'include'
+                    }).then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                console.log(data.message); // Output success message
+                                this.textContent = 'Liked'; // Change button text
+                                this.disabled = true; // Disable button
+                            } else {
+                                console.error(data.message); // Output error message
+                            }
+                        });
+                });
+            });
+        });
+    </script>
     <!-- Section Course End -->
 {% endblock %}

@@ -30,7 +30,6 @@ class PaymentController extends AbstractController
 
 
     #[Route('/cancel-url', name: 'cancel_url')]
-
     public function cancelUrl(): Response
     {
         return $this->render('payment/cancel.html.twig', []);

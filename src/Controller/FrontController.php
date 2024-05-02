@@ -80,4 +80,30 @@ class FrontController extends AbstractController
             'limited' => false,  // This indicates that the view is limited
         ]);
     }
+    #[Route('/checkout', name: 'checkout')]
+    public function checkouttest(string $stripeSK): Response
+    {
+        Stripe::setApiKey($stripeSK);
+
+        $session = Session::create([
+            'payment_method_types' => ['card'],
+            'line_items' => [
+                [
+                    'price_data' => [
+                        'currency' => 'usd',
+                        'product_data' => [
+                            'name' => 'T-shirt',
+                        ],
+                        'unit_amount' => 2000,
+                    ],
+                    'quantity' => 1,
+                ]
+            ],
+            'mode' => 'payment',
+            'success_url' => $this->generateUrl('success_url', [], UrlGeneratorInterface::ABSOLUTE_URL),
+            'cancel_url' => $this->generateUrl('cancel_url', [], UrlGeneratorInterface::ABSOLUTE_URL),
+        ]);
+
+        return $this->redirect($session->url, 303);
+    }
 }

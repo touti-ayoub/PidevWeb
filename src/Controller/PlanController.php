@@ -237,39 +237,6 @@ class PlanController extends AbstractController
 
 
     /**
-     * @Route("/plan/{planId}/unlike", name="plan_unlike", methods={"POST"})
-     */
-    public function unlikePlan(int $planId): Response
-    {
-        $entityManager = $this->getDoctrine()->getManager();
-        $plan = $entityManager->getRepository(Plan::class)->find($planId);
-        $user = $this->getUser(); // Assuming you have some way to get the authenticated user
-
-        if (!$plan) {
-            return new JsonResponse(['success' => false, 'message' => 'Plan not found'], 404);
-        }
-
-        if (!$user) {
-            return new JsonResponse(['success' => false, 'message' => 'User not authenticated'], 401);
-        }
-
-        // Check if the user has not liked this plan
-        if (!$user->getLikedPlans()->contains($plan)) {
-            return new JsonResponse(['success' => false, 'message' => 'You have not liked this plan'], 409);
-        }
-
-        try {
-            $user->removeLikedPlan($plan);
-            $entityManager->flush();
-        } catch (\Exception $e) {
-            // Assuming you have a logger service
-            $logger->error('Failed to unlike a plan: ' . $e->getMessage());
-            return new JsonResponse(['success' => false, 'message' => 'Server error'], 500);
-        }
-
-        return new JsonResponse(['success' => true, 'message' => 'Plan unliked successfully']);
-    }
-    /**
      * @Route("/histogram/data", name="histogram_data")
      */
     public function data(UserRepository $userRepository)

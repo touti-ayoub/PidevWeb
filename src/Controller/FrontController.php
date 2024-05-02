@@ -70,6 +70,7 @@ class FrontController extends AbstractController
     }
 
     #[Route('/user/plans', name: 'app_plan')]
+
     public function plan(): Response
     {
         // Fetch only the first four plans

@@ -73,11 +73,11 @@ class FrontController extends AbstractController
     public function plan(): Response
     {
         // Fetch only the first four plans
-        $plans = $this->getDoctrine()->getRepository(Plan::class)->findBy([], null, 4);
+        $plans = $this->getDoctrine()->getRepository(Plan::class)->findAll();
 
         return $this->render('front/allPlans.html.twig', [
             'plans' => $plans,
-            'limited' => true,  // This indicates that the view is limited
+            'limited' => false,  // This indicates that the view is limited
         ]);
     }
 }

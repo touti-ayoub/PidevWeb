@@ -64,13 +64,20 @@
                             'Content-Type': 'application/json',
                         },
                         credentials: 'include'
-                    }).then(response => response.json())
+                    }).then(response => {
+                        if (response.status === 409) {
+                            alert('You have already liked this plan');
+                            return null;
+                        } else {
+                            return response.json();
+                        }
+                    })
                         .then(data => {
-                            if (data.success) {
+                            if (data && data.success) {
                                 console.log(data.message); // Output success message
                                 this.textContent = 'Liked'; // Change button text
                                 this.disabled = true; // Disable button
-                            } else {
+                            } else if (data) {
                                 console.error(data.message); // Output error message
                             }
                         });

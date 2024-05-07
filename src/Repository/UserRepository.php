@@ -38,6 +38,40 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->getEntityManager()->persist($user);
         $this->getEntityManager()->flush();
     }
+    public function countTotalAccounts(): int
+    {
+        return $this->createQueryBuilder('u')
+            ->select('count(u.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function countVerifiedAccounts(): int
+    {
+        return $this->createQueryBuilder('u')
+            ->select('count(u.id)')
+            ->where('u.isVerified = :isVerified')
+            ->setParameter('isVerified', true)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function countAccountsPerMonth(): array
+    {
+        $rsm = new \Doctrine\ORM\Query\ResultSetMapping();
+        $rsm->addScalarResult('month', 'month');
+        $rsm->addScalarResult('year', 'year');
+        $rsm->addScalarResult('count', 'count');
+
+        $query = $this->getEntityManager()->createNativeQuery('
+        SELECT MONTH(created_at) as month, YEAR(created_at) as year, COUNT(id) as count
+        FROM user
+        GROUP BY year, month
+        ORDER BY year, month
+    ', $rsm);
+
+        return $query->getResult();
+    }
 
 //    /**
 //     * @return User[] Returns an array of User objects

@@ -1,0 +1,62 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Create new Subscription{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .form-group {
+            margin-bottom: 15px;
+            width: 700px; /* Adjust as needed */
+            height: 60px; /* Adjust as needed */
+        }
+
+        input.form-control {
+            border: none;
+            border-bottom: 1px solid #ccc;
+            box-shadow: none;
+            border-radius: 0;
+            width: 100%; /* Adjust as needed */
+        }
+
+        .btn {
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="card" style="width: 50rem; margin-left: 500px; margin-top: 100px">
+        <div class="card-body">
+            <h5 class="card-title">Subscriptions</h5>
+            <form method="post" action="{{ path('app_subscription_new') }}">
+                {{ form_start(form) }}
+                <div class="form-group">
+                    {{ form_label(form.name) }}
+                    {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.name) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.type) }}
+                    {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.type) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.price) }}
+                    {{ form_widget(form.price, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.price) }}
+                </div>
+                <br>
+                <img src="{{ asset('back-office/img/save.png') }}" alt="Save" style="display: block; margin-left: auto; margin-right: auto; width: 50px; height: 50px;" onclick="this.closest('form').submit()">
+                {{ form_end(form) }}
+            </form>
+        </div>
+    </div>
+{% endblock %}

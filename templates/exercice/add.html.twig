@@ -1,0 +1,92 @@
+{% extends 'base-back.html.twig' %}
+{% block title %}New Exercice{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        input.form-control{
+            border: none;
+            border-bottom: 1px solid #ccc;
+            box-shadow: none;
+            border-radius: 0;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <style>
+        .form-group {
+            margin-bottom: 15px;
+            width: 700px; /* Adjust as needed */
+            height: 60px; /* Adjust as needed */
+        }
+        .btn {
+
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        .error {
+            color: red;
+            font-size: x-small;
+        }
+    </style>
+    <div>
+        <div class=" col-lg-7 mt-lg-5 card" style="margin-left: 350px">
+            <div class="card-header pb-0 p-3">
+                <div class="d-flex justify-content-between">
+                    <h6 class="mb-2">Create new Exercice</h6>
+                </div>
+            </div>
+            <div style="margin-left: 40px">
+
+                {{ form_start(form) }}
+                {{ form_errors(form) }}
+                <div class="form-group">
+                    {{ form_label(form.NOM) }}
+                    {{ form_widget(form.NOM, {'attr': {'class': 'form-control'}}) }}
+                    <div class="error">
+                    {{ form_errors(form.NOM) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.DESCRIPTION) }}
+                    {{ form_widget(form.DESCRIPTION, {'attr': {'class': 'form-control'}}) }}
+                    <div class="error">
+                    {{ form_errors(form.DESCRIPTION) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.imageFile) }}
+                    {{ form_widget(form.imageFile, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.imageFile) }}
+                    {% if exercice.getIMAGEURL %}
+                        <img src="{{ asset('uploads/' ~ exercice.getIMAGEURL) }}" alt="Exercice image"
+                             style="max-width: 150px !important; max-height: 150px;">
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.MUSCLE_CIBLE) }}
+                    {{ form_widget(form.MUSCLE_CIBLE, {'attr': {'class': 'form-control'}}) }}
+                    <div class="error">
+                    {{ form_errors(form.MUSCLE_CIBLE) }}
+                    </div>
+                </div>
+                <a href="#" onclick="this.closest('form').submit()">
+                    <img src="{{ asset('back-office/img/save.png') }}" alt="Update" style="width: 43px; height: 43px;">
+                </a>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: center; align-items: center; height: 50vh;">
+
+
+
+    </div>
+{% endblock %}

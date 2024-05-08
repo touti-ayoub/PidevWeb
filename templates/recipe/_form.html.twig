@@ -1,0 +1,32 @@
+{{ form_start(form) }}
+    <div class="form-group">
+        {{ form_label(form.name) }}
+        {{ form_widget(form.name, { 'attr': { 'class': 'form-control' } }) }}
+        {{ form_errors(form.name) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.totalCalories) }}
+        {{ form_widget(form.totalCalories, { 'attr': { 'class': 'form-control' } }) }}
+        {{ form_errors(form.totalCalories) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.totalProtein) }}
+        {{ form_widget(form.totalProtein, { 'attr': { 'class': 'form-control' } }) }}
+        {{ form_errors(form.totalProtein) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.totalCarbs) }}
+        {{ form_widget(form.totalCarbs, { 'attr': { 'class': 'form-control' } }) }}
+        {{ form_errors(form.totalCarbs) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.totalFat) }}
+        {{ form_widget(form.totalFat, { 'attr': { 'class': 'form-control' } }) }}
+        {{ form_errors(form.totalFat) }}
+    </div>
+    <!-- Ajouter d'autres champs de formulaire au besoin -->
+    <button type="submit" class="btn btn-primary">
+        <i class="fas fa-save"></i>
+        Save
+    </button>
+{{ form_end(form) }}

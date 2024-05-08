@@ -1,0 +1,87 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	{{ parent() }}
+<!-- Section Gallery Start -->
+	<!-- Section Gallery END -->
+<div class="main-wrapper ">
+	<section class="page-title bg-2">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<ul class="list-inline mb-0">
+						<li class="list-inline-item"><a href="index.html" class="text-sm letter-spacing text-white text-uppercase font-weight-bold">Home</a></li>
+						<li class="list-inline-item"><span class="text-white">|</span></li>
+					</ul>
+					<h1 class="text-lg text-white mt-2">Food List </h1>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Section pricing start -->
+	</section>
+	<section class="section food-list">
+		<div class="container">
+			<div class="row">
+				{% for foodItem in food %}
+					<div class="col-lg-4 col-md-6">
+						<div class="card border-0 rounded-0 p-0 mb-4 shadow-sm">
+							<div class="card-body" onclick="changeColor(event)">
+								<h5 class="card-title">{{ foodItem.name }}</h5>
+								<img src="{{ asset('images/' ~ foodItem.getImage()) }}" alt="..." style="width: 350px; height: 350px;">
+								<p class="card-text">Calories:
+									{{ foodItem.calories }}</p>
+								<p class="card-text">Protein:
+									{{ foodItem.protein }}</p>
+								<p class="card-text">Carbohydrates:
+									{{ foodItem.carbohydrates }}</p>
+								<p class="card-text">Fat:
+									{{ foodItem.fat }}</p>
+								<p class="card-text">Serving Size:
+									{{ foodItem.getServingSize() }}</p>
+								<p class="card-text">Serving Unit:
+									{{ foodItem.getServingUnit() }}</p>
+								<!-- Ajout de l'action pour sélectionner le card avec un ID -->
+								<input type="checkbox" name="foodIds[]" value="{{ foodItem.id }}">
+								<label>Select</label>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+				<!-- Bouton pour calculer les totaux -->
+				<div class="col-12">
+					<button type="button" href="pricing.html" target="_blank" class="btn btn-main " onclick="calculateTotals()">Calculate Totals</button>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script>
+		function calculateTotals() { // Créer un formulaire pour envoyer les ID des aliments sélectionnés
+var form = document.createElement('form');
+form.method = 'POST';
+form.action = '{{ path('app_recipe_calculate_totals') }}';
+form.style.display = 'none';
+
+// Récupérer les ID des aliments sélectionnés
+var foodIds = document.querySelectorAll('input[name="foodIds[]"]:checked');
+foodIds.forEach(function (checkbox) {
+var input = document.createElement('input');
+input.type = 'hidden';
+input.name = 'foodIds[]';
+input.value = checkbox.value;
+form.appendChild(input);
+});
+
+// Ajouter le formulaire à la page et le soumettre
+document.body.appendChild(form);
+form.submit();
+}
+	</script>
+{% endblock %}

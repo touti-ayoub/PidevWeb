@@ -1,0 +1,47 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Popular Courses{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        /* Your existing styles */
+    </style>
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="main-wrapper">
+        <section class="page-title bg-2">
+            <!-- Existing content -->
+        </section>
+        <section class="section course">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <div class="section-title">
+                            <div class="divider mb-3"></div>
+                            <h2>All Exercices</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    {% for exercise in exercices %}
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="media align-items-center mb-4">
+                                <img src="{{ asset('images/' ~ exercise.getIMAGEURL) }}" class="mr-3 w-50" alt="{{ exercise.getNOM }}">
+
+                                <div class="media-body">
+                                    <span class="letter-spacing text-sm">Fitness</span>
+                                    <h4 class="mb-3 text-uppercase">{{ exercise.getNOM }}</h4>
+                                    <p>{{ exercise.getDESCRIPTION }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </div>
+
+{% endblock %}

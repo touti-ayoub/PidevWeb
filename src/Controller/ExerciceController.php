@@ -11,11 +11,12 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Doctrine\Persistence\ManagerRegistry;
+use App\Entity\Plan;
 
 
 class ExerciceController extends AbstractController
 {
-    #[Route('/exercice', name: 'app_exercice')]
+    #[Route('/admin/exercice', name: 'app_exercice')]
     public function indexx(): Response
     {
         return $this->render('exercice/index.html.twig', [
@@ -73,7 +74,7 @@ class ExerciceController extends AbstractController
         ]);
     }
     /**
-     * @Route("/exercice", name="exercice_index", methods={"GET"})
+     * @Route("/admin/exercice", name="exercice_index", methods={"GET"})
      */
     public function index(): Response
     {
@@ -86,7 +87,7 @@ class ExerciceController extends AbstractController
         ]);
     }
     /**
-     * @Route("/exercices", name="exercices")
+     * @Route("/admin/exercices", name="exercices")
      */
     public function listExercices(): Response
     {
@@ -97,7 +98,7 @@ class ExerciceController extends AbstractController
         ]);
     }
     /**
-     * @Route("/exercice/{id}/delete", name="exercice_delete", methods={"POST"})
+     * @Route("/admin/exercice/{id}/delete", name="exercice_delete", methods={"POST"})
      */
     public function delete(Request $request, $id): Response
     {
@@ -117,7 +118,7 @@ class ExerciceController extends AbstractController
         return $this->redirectToRoute('exercices');
     }
     /**
-     * @Route("/exercice/{id}/edit", name="exercice_edit", methods={"GET","POST"})
+     * @Route("/admin/exercice/{id}/edit", name="exercice_edit", methods={"GET","POST"})
      */
     public function edit(ManagerRegistry $doctrine, Request $request, SluggerInterface $slugger, $id): Response
     {
@@ -162,6 +163,23 @@ class ExerciceController extends AbstractController
         return $this->render('exercice/edit.html.twig', [
             'form' => $form->createView(),
             'exercice' => $exercice,
+        ]);
+    }
+    #[Route('/main/exercises/{id}', name: 'app_exercises')]
+    public function showAllExercises($id): Response
+    {
+        $plan = $this->getDoctrine()->getRepository(Plan::class)->find($id);
+
+        if (!$plan) {
+            throw $this->createNotFoundException(
+                'No plan found for id '.$id
+            );
+        }
+
+        $exercises = $plan->getExercices();
+
+        return $this->render('front/planExercice.html.twig', [
+            'exercises' => $exercises,
         ]);
     }
 }

@@ -38,47 +38,47 @@
 
 
 
-        <div>
-            <div class=" col-lg-7 mt-lg-5 card" style="margin-left: 350px">
-                <div class="card-header pb-0 p-3">
-                    <div class="d-flex justify-content-between">
-                        <h6 class="mb-2">Create new Exercice</h6>
-                    </div>
-                </div>
-                <div style="margin-left: 40px">
-                    {{ form_start(form) }}
-                    <div class="form-group">
-                        {{ form_label(form.NOM) }}
-                        {{ form_widget(form.NOM, {'attr': {'class': 'form-control'}}) }}
-                        <div class="error">
-                            {{ form_errors(form.NOM) }}
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        {{ form_label(form.DESCRIPTION) }}
-                        {{ form_widget(form.DESCRIPTION, {'attr': {'class': 'form-control'}}) }}
-                        <div class="error">
-                            {{ form_errors(form.DESCRIPTION) }}
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        {{ form_label(form.imageFile) }}
-                        {{ form_widget(form.imageFile, {'attr': {'class': 'form-control'}}) }}
-                        {% if exercice.getIMAGEURL %}
-                            <img src="{{ asset('uploads/' ~ exercice.getIMAGEURL) }}" alt="Exercice image" style="max-width: 200px !important; max-height: 200px !important ;margin-left: 100px;margin-top: 100px">
-                        {% endif %}
-                    </div>
-                    <div class="form-group">
-                        {{ form_label(form.MUSCLE_CIBLE) }}
-                        {{ form_widget(form.MUSCLE_CIBLE, {'attr': {'class': 'form-control'}}) }}
-                    </div>
-                    <a href="#" onclick="this.closest('form').submit()">
-                        <img src="{{ asset('back-office/img/save.png') }}" alt="Update" style="width: 43px; height: 43px;">
-                    </a>
-                    {{ form_end(form) }}
+    <div>
+        <div class=" col-lg-7 mt-lg-5 card" style="margin-left: 350px">
+            <div class="card-header pb-0 p-3">
+                <div class="d-flex justify-content-between">
+                    <h6 class="mb-2">Create new Exercice</h6>
                 </div>
             </div>
+            <div style="margin-left: 40px">
+                {{ form_start(form) }}
+                <div class="form-group">
+                    {{ form_label(form.NOM) }}
+                    {{ form_widget(form.NOM, {'attr': {'class': 'form-control'}}) }}
+                    <div class="error">
+                        {{ form_errors(form.NOM) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.DESCRIPTION) }}
+                    {{ form_widget(form.DESCRIPTION, {'attr': {'class': 'form-control'}}) }}
+                    <div class="error">
+                        {{ form_errors(form.DESCRIPTION) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.imageFile) }}
+                    {{ form_widget(form.imageFile, {'attr': {'class': 'form-control'}}) }}
+                    {% if exercice.getIMAGEURL %}
+                        <img src="{{ asset('images/' ~ exercice.getIMAGEURL) }}" alt="Exercice image" style="max-width: 200px !important; max-height: 200px !important ;margin-left: 100px;margin-top: 100px">
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.MUSCLE_CIBLE) }}
+                    {{ form_widget(form.MUSCLE_CIBLE, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <a href="#" onclick="this.closest('form').submit()">
+                    <img src="{{ asset('back-office/img/save.png') }}" alt="Update" style="width: 43px; height: 43px;">
+                </a>
+                {{ form_end(form) }}
+            </div>
         </div>
+    </div>
 
-</div>
+    </div>
 {% endblock %}

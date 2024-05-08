@@ -1,0 +1,54 @@
+{{ form_start(form ) }}
+
+<div class="form-group">
+	{{ form_label(form.name) }}
+	{{ form_widget(form.name, { 'attr': { 'class': 'form-control' } }) }}
+	{{ form_errors(form.name) }}
+</div>
+
+<div class="form-group">
+	{{ form_label(form.calories) }}
+	{{ form_widget(form.calories, { 'attr': { 'class': 'form-control' } }) }}
+	{{ form_errors(form.calories) }}
+</div>
+
+<div class="form-group">
+	{{ form_label(form.protein) }}
+	{{ form_widget(form.protein, { 'attr': { 'class': 'form-control' } }) }}
+	{{ form_errors(form.protein) }}
+</div>
+
+<div class="form-group">
+	{{ form_label(form.carbohydrates) }}
+	{{ form_widget(form.carbohydrates, { 'attr': { 'class': 'form-control' } }) }}
+	{{ form_errors(form.carbohydrates) }}
+</div>
+
+<div class="form-group">
+	{{ form_label(form.fat) }}
+	{{ form_widget(form.fat, { 'attr': { 'class': 'form-control' } }) }}
+	{{ form_errors(form.fat) }}
+</div>
+
+<div class="form-group">
+	{{ form_label(form.serving_size) }}
+	{{ form_widget(form.serving_size, { 'attr': { 'class': 'form-control' } }) }}
+	{{ form_errors(form.serving_size) }}
+</div>
+
+<div class="form-group">
+	{{ form_label(form.serving_unit) }}
+	{{ form_widget(form.serving_unit, { 'attr': { 'class': 'form-control' } }) }}
+	{{ form_errors(form.serving_unit) }}
+</div>
+<div class="form-group">
+	<label for="duree">Image :</label>
+	{{ form_widget(form.image, {'attr': {'placeholder':'Nom Prenom '}}) }}
+</div>
+
+<button type="submit" class="btn btn-primary">
+	<i class="fas fa-save"></i>
+	Save
+</button>
+
+{{ form_end(form) }}

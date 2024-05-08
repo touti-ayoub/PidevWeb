@@ -1,0 +1,26 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Edit Recipe{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div class="card" style="width: 50rem; margin-left: 370px; margin-top: 100px">
+        <div class="card-body">
+		<a href="{{ path('app_recipe_index') }}">
+				<i class="fas fa-arrow-left"></i>
+			</a>
+            <h5 class="card-title text-center">Edit Recipe</h5>
+
+            {{ include('recipe/_form.html.twig', {'button_label': 'Update'}) }}
+
+            <a href="{{ path('app_recipe_index') }}"><i class="fas fa-arrow-left"></i> back to list</a>
+
+            {{ include('recipe/_delete_form.html.twig') }}
+        </div>
+    </div>
+{% endblock %}

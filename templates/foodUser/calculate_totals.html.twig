@@ -1,0 +1,42 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Add recipe
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<!-- Ajoutez ici vos liens vers les fichiers CSS supplémentaires si nécessaire -->
+{% endblock %}
+
+{% block body %}
+	{{ parent() }}
+	<section class="section food-list">
+		<div class="container">
+			<div class="d-flex justify-content-center">
+				<div class="text-center">
+					<h1>Totals</h1>
+					<p>Total Calories:
+						{{ totalCalories }}</p>
+					<p>Total Protein:
+						{{ totalProtein }}</p>
+					<p>Total Carbs:
+						{{ totalCarbs }}</p>
+					<p>Total Fat:
+						{{ totalFat }}</p>
+
+					<form action="{{ path('app_recipe_create_recipe') }}" method="post">
+						<label for="recipeName">Recipe Name:</label>
+						<input type="text" id="recipeName" name="recipeName">
+						<input type="hidden" name="totalCalories" value="{{ totalCalories }}">
+						<input type="hidden" name="totalProtein" value="{{ totalProtein }}">
+						<input type="hidden" name="totalCarbs" value="{{ totalCarbs }}">
+						<input type="hidden" name="totalFat" value="{{ totalFat }}"><br><br>
+						<div class="col-12">
+							<button type="submit" href="pricing.html" target="_blank" class="btn btn-main ">Create Recipe</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

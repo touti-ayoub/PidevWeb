@@ -1,0 +1,59 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Recipe index
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+
+{% block body %}
+	{{ parent() }}
+<div class="main-wrapper ">
+	<section class="page-title bg-2">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<ul class="list-inline mb-0">
+						<li class="list-inline-item"><a href="index.html" class="text-sm letter-spacing text-white text-uppercase font-weight-bold">Home</a></li>
+						<li class="list-inline-item"><span class="text-white">|</span></li>
+						<li class="list-inline-item"><a href="#" class="text-color text-uppercase text-sm letter-spacing"></a></li>
+					</ul>
+					<h1 class="text-lg text-white mt-2">Recipes </h1>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Section pricing start -->
+	</section>
+	<section class="section food-list">
+		<div class="container">
+			<div class="row">
+				{% for recipeItem in recipe %}
+					<div class="col-lg-4 col-md-6">
+						<div class="card border-0 rounded-0 p-0 mb-4 shadow-sm">
+							<div class="card-body">
+								<h5 class="card-title">{{ recipeItem.name }}</h5>
+								<img src="{{ asset('images/' ~ recipeItem.getImage()) }}" alt="..." style="width: 350px; height: 350px;">
+
+								<p class="card-text">Total Calories:
+									{{ recipeItem.totalCalories }}</p>
+								<p class="card-text">Total Protein:
+									{{ recipeItem.totalProtein }}</p>
+								<p class="card-text">Total Carbs:
+									{{ recipeItem.totalCarbs }}</p>
+								<p class="card-text">Total Fat:
+									{{ recipeItem.totalFat }}</p>
+
+								{% if recipeItem.image %}
+									<img src="{{ asset('uploads/' ~ recipeItem.image) }}" alt="{{ recipeItem.name }}" class="img-fluid">
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+
+	</section>
+{% endblock %}

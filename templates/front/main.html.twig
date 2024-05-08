@@ -4,11 +4,52 @@
 
 {% block stylesheets %}
     {{ parent() }}
+    <style>
+        .card {
+            display: flex;
+            flex-direction: column;
+            height: 500px; /* Sets a fixed height for each card */
+            overflow: hidden; /* Ensures content doesn't overflow */
+        }
 
+        .card img {
+            height: 70%; /* Sets the image to take up 70% of the card's height */
+            width: 100%; /* Image will fill the width of the card */
+            object-fit: cover; /* Ensures the image covers the area nicely without distortion */
+        }
+
+        .card-body {
+            height: 30%; /* Remaining height for the card body */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Distributes space inside the card-body */
+        }
+
+        .card-body h4, .card-body p {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap; /* Prevents text from wrapping */
+        }
+
+        .card-body p {
+            font-size: 0.9rem; /* Smaller font size for the description */
+        }
+
+        .like-button img {
+            border: none;
+            outline: none;
+        }
+    </style>
 {% endblock %}
 
 {% block body %}
     {{ parent() }}
+<!-- Section Menu Start -->
+
+<div class="main-wrapper ">
+    <!-- Section Menu End -->
+
+    <!-- Section Slider Start -->
     <!-- Slider Start -->
     <section class="slider">
         <div class="container">
@@ -17,7 +58,8 @@
                     <span class="h6 d-inline-block mb-4 subhead text-uppercase">Gym fitness club</span>
                     <h1 class="text-uppercase text-white mb-5">Step up your <span class="text-color">fitness Challange</span><br>with us</h1>
 
-                    <a href="{{ path('app_membership') }}" target="_blank" class="btn btn-main">Join Us <i class="ti-angle-right ml-3"></i></a>                </div>
+                    <a href="{{ path('app_register') }}" target="_blank" class="btn btn-main " >Join Us <i class="ti-angle-right ml-3"></i></a>
+                </div>
             </div>
         </div>
     </section>
@@ -32,6 +74,7 @@
                         <span class="number">01</span>
                         <h3 class="mt-3">Modern Equipment</h3>
                         <p class="mt-3 mb-4">Vestibulum sit amet blan augue, sit amet vehicula mi. Aliquam vitae varius.</p>
+                        <a href="about.html" class="text-color text-uppercase font-size-13 letter-spacing font-weight-bold"><i class="ti-minus mr-2 "></i>more Details</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -39,6 +82,7 @@
                         <span class="number">02</span>
                         <h3 class="mt-3">PROFFESIONAL TRAINer</h3>
                         <p class="mt-3 mb-4">Vestibulum sit amet blan augue, sit amet vehicula mi. Aliquam vitae varius.</p>
+                        <a href="about.html" class="text-color text-uppercase font-size-13 letter-spacing font-weight-bold"><i class="ti-minus mr-2 "></i>more Details</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -46,10 +90,240 @@
                         <span class="number">03</span>
                         <h3 class="mt-3">HEALTHY DIET Plan</h3>
                         <p class="mt-3 mb-4">Vestibulum sit amet blan augue, sit amet vehicula mi. Aliquam vitae varius.</p>
+                        <a href="about.html" class="text-color text-uppercase font-size-13 letter-spacing font-weight-bold"><i class="ti-minus mr-2 "></i>more Details</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- Section Intro End -->
+
+    <!-- Section About start -->
+    <section class="section about">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <img src="{{ asset('front-office/images/bg/bg-5.jpg') }}" alt="" class="img-fluid rounded shadow w-100">                </div>
+
+                <div class="col-lg-6">
+                    <div class="pl-3 mt-5 mt-lg-0">
+                        <h2 class="mt-1 mb-3">We’ve skill in <br>wide <span class="text-color">range of fitness</span> and Other body health facility. </h2>
+
+                        <p class="mb-4">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis Theme natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aliquam lorem ante, dapibus in.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Section About End -->
+
+    <!-- section Call To action start -->
+    <section class="section cta">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-12 col-sm-12">
+                    <div class="text-center">
+                        <span class="h6 letter-spacing text-white">Dscover your potential</span>
+                        <h2 class="text-lg mt-4 mb-5 text-white">
+                            Book your early seat to get dicsount
+                        </h2>
+
+                        <a href="{{ path('app_membership') }}" class="btn btn-main text-white">Join Today</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section Call To action start -->
+
+    <!-- Section Services Start -->
+    <section class="section services ">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="section-title">
+                        <div class="divider mb-3"></div>
+                        <h2>Our Services</h2>
+                        <p>We offer more than 35 group exercis, aerobic classes each week.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row no-gutters">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="text-center  px-4 py-5 hover-style-1">
+                        <i class="icofont-gym-alt-2 text-lg text-color"></i>
+                        <h4 class="mt-3 mb-4 text-uppercase">WEIGHT LIFTING</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, molestias.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="text-center  px-4 py-5 hover-style-1">
+                        <i class="icofont-cycling-alt text-lg text-color"></i>
+                        <h4 class="mt-3 mb-4 text-uppercase">Cycling</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, molestias.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="text-center  px-4 py-5 hover-style-1">
+                        <i class="icofont-gym-alt-3 text-lg text-color"></i>
+                        <h4 class="mt-3 mb-4 text-uppercase">YOGA MEDIDATION</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, molestias.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="text-center  px-4 py-5 hover-style-1">
+                        <i class="icofont-muscle text-lg text-color"></i>
+                        <h4 class="mt-3 mb-4 text-uppercase">Building body</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, molestias.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="text-center  px-4 py-5 hover-style-1">
+                        <i class="icofont-dumbbell text-lg text-color"></i>
+                        <h4 class="mt-3 mb-4 text-uppercase">Fitness Track</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, molestias.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="text-center  px-4 py-5 hover-style-1">
+                        <i class="icofont-gym text-lg text-color"></i>
+                        <h4 class="mt-3 mb-4 text-uppercase">Fitness</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, molestias.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Section Services End -->
+    <!-- Section Course Start -->
+    <section class="section course bg-gray">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="section-title">
+                        <div class="divider mb-3"></div>
+                        <h2>Popular Courses</h2>
+                        <p>We offer more than 35 group exercise and aerobic classes each week.</p>
+
+                        {# Example template to display flash messages with AJAX #}
+                        <div id="flash-messages-container"></div>
+                        <script>
+                            function displayFlashMessages() {
+                                fetch('{{ path('fetch_flash_messages') }}')
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        const container = document.getElementById('flash-messages-container');
+                                        container.innerHTML = ''; // Clear previous messages
+                                        data.forEach(message => {
+                                            const alertDiv = document.createElement('div');
+                                            alertDiv.classList.add('alert', 'alert-success');
+                                            alertDiv.textContent = message;
+                                            container.appendChild(alertDiv);
+                                        });
+                                    });
+                            }
+
+                            displayFlashMessages(); // Call the function when the page loads
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% for plan in plans %}
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card border-0 rounded-0 p-0 mb-5 mb-lg-0 shadow-sm">
+                            <img src="{{ asset('images/' ~ plan.imageurl) }}" alt="{{ plan.nomP }}" class="img-fluid">
+                            <div class="card-body">
+                                <a href="{{ path('app_exercises', {'id': plan.id}) }}"><h4
+                                            class="font-secondary mb-0">{{ plan.nomP }}</h4></a>
+                                <p class="mb-2">{{ plan.descriptionP }}</p>
+                                <button class="like-button" data-plan-id="{{ plan.id }}"
+                                        data-csrf-token="{{ csrf_token('like' ~ plan.id) }}" style="border: none;">
+                                    <img src="{{ asset('images/heart.png') }}" alt="Like" style="width: 30px; height: 30px; border: none;outline: none;">
+
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="mt-5 text-center">
+                        <a href="{{ path('app_plan') }}">See all the plans</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <section class="section pricing">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <div class="section-title">
+                            <div class="divider mb-3"></div>
+                            <h2>Package Pricing</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    {% for plan in plans|slice(0, 3) %}
+                        <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                            <div class="card rounded-0 px-4 py-5 ">
+                                <img src="{{ asset('images/' ~ plan.imageurl) }}" alt="{{ plan.nomP }}" class="img-fluid">
+                                <h4 class="card-title text-capitalize font-weight-normal font-secondary">{{ plan.nomP }}</h4>
+                                <h3 class="text-lg font-secondary position-relative mt-2"><sup class="text-sm position-absolute"></sup>{{ plan.price }}  <sub>DT</sub></h3>
+
+                                <div class="card-body mt-2">
+                                    <ul class="list-unstyled lh-35 mb-4">
+                                        <li class="text-black font-weight-bold"><i class="ti-check mr-3 text-color "></i>{{ plan.descriptionP }}</li>
+                                    </ul>
+                                    <a href="{{ path('checkout', { 'id': plan.id }) }}" class="btn btn-solid-border text-black">Buy Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const likeButtons = document.querySelectorAll('.like-button');
+            likeButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const planId = this.getAttribute('data-plan-id');
+                    const csrfToken = this.getAttribute('data-csrf-token'); // Retrieve CSRF token
+                    fetch('{{ path('plan_like', {'planId': 'ID'}) }}'.replace('ID', planId), {
+                        method: 'POST',
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'X-CSRF-Token': csrfToken, // Pass CSRF token in the request header
+                            'Content-Type': 'application/json',
+                        },
+                        credentials: 'include'
+                    }).then(response => {
+                        if (response.status === 409) {
+                            alert('You have already liked this plan');
+                            return null;
+                        } else {
+                            return response.json();
+                        }
+                    })
+                        .then(data => {
+                            if (data && data.success) {
+                                console.log(data.message); // Output success message
+                                this.textContent = 'Liked'; // Change button text
+                                this.disabled = true; // Disable button
+                            } else if (data) {
+                                console.error(data.message); // Output error message
+                            }
+                        });
+                });
+            });
+        });
+    </script>
+    <!-- Section Course End -->
 {% endblock %}

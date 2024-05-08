@@ -1,0 +1,78 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Food index
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link
+	rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<!-- Inclure Font Awesome pour les icônes -->
+	<style>
+		/* CSS pour styliser les icônes */
+		.action-icons a {
+			margin-right: 5px; /* Ajouter un espacement entre les icônes */
+			color: #007bff; /* Changer la couleur des icônes */
+			text-decoration: none; /* Supprimer la soulignement des liens */
+		}
+
+		.action-icons a:hover {
+			color: #0056b3; /* Changer la couleur au survol */
+		}
+	</style>
+{% endblock %}
+
+{% block body %}
+	{{ parent() }}
+
+	<div class="card" style="width: 68rem; margin-left: 370px; margin-top: 100px">
+		<div class="card-body">
+			<h5 class="card-title text-center">Food archive</h5>
+			<div class="table-responsive">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Calories</th>
+							<th>Protein</th>
+							<th>Carbohydrates</th>
+							<th>Fat</th>
+							<th>Serving_size</th>
+							<th>Serving_unit</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for food in food %}
+							<tr>
+								<td>{{ food.name }}</td>
+								<td>{{ food.calories }}</td>
+								<td>{{ food.protein }}</td>
+								<td>{{ food.carbohydrates }}</td>
+								<td>{{ food.fat }}</td>
+								<td>{{ food.servingSize }}</td>
+								<td>{{ food.servingUnit }}</td>
+								<td
+									class="action-icons">
+									<!-- Utiliser les classes CSS pour styliser les icônes -->
+									<a href="{{ path('app_food_unarchive', {'id': food.id}) }}">
+										<i class="fas fa-eye"></i>
+									</a>
+
+
+								</td>
+							</tr>
+						{% else %}
+							<tr>
+								<td colspan="8">no records found</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+			<a href="{{ path('app_food_new') }}">
+				<i class="fas fa-plus"></i>
+				Create new</a>
+		</div>
+	</div>
+{% endblock %}

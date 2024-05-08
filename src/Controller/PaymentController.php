@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use App\Repository\SubscriptionRepository;
+use App\Repository\PlanRepository;
 
 class PaymentController extends AbstractController
 {
@@ -16,37 +16,9 @@ class PaymentController extends AbstractController
     #[Route('/payment', name: 'payment')]
     public function index(): Response
     {
-        return $this->render('payment/memberships.html.twig', [
+        return $this->render('payment/membership.html.twig', [
             'controller_name' => 'PaymentController',
         ]);
-    }
-
-
-    #[Route('/checkout', name: 'checkout')]
-    public function checkouttest(string $stripeSK): Response
-    {
-        Stripe::setApiKey($stripeSK);
-
-        $session = Session::create([
-            'payment_method_types' => ['card'],
-            'line_items' => [
-                [
-                    'price_data' => [
-                        'currency' => 'usd',
-                        'product_data' => [
-                            'name' => 'T-shirt',
-                        ],
-                        'unit_amount' => 2000,
-                    ],
-                    'quantity' => 1,
-                ]
-            ],
-            'mode' => 'payment',
-            'success_url' => $this->generateUrl('success_url', [], UrlGeneratorInterface::ABSOLUTE_URL),
-            'cancel_url' => $this->generateUrl('cancel_url', [], UrlGeneratorInterface::ABSOLUTE_URL),
-        ]);
-
-        return $this->redirect($session->url, 303);
     }
 
 
@@ -63,20 +35,20 @@ class PaymentController extends AbstractController
         return $this->render('payment/cancel.html.twig', []);
     }
 
-    private $subscriptionRepository;
+    private $planRepository;
 
-    public function __construct(SubscriptionRepository $subscriptionRepository)
+    public function __construct(PlanRepository $planRepository)
     {
-        $this->subscriptionRepository = $subscriptionRepository;
+        $this->planRepository = $planRepository;
     }
 
     #[Route('/checkout/{id}', name: 'checkout')]
     public function checkout(int $id, string $stripeSK): Response
     {
-        $subscription = $this->subscriptionRepository->find($id);
+        $plan = $this->planRepository->find($id);
 
-        if (!$subscription) {
-            throw $this->createNotFoundException('The subscription does not exist');
+        if (!$plan) {
+            throw $this->createNotFoundException('The plan does not exist');
         }
 
         Stripe::setApiKey($stripeSK);
@@ -88,10 +60,9 @@ class PaymentController extends AbstractController
                     'price_data' => [
                         'currency' => 'usd',
                         'product_data' => [
-                            'name' => $subscription->getName(),
+                            'name' => $plan->getNomP(),
                         ],
-                        'unit_amount' => $subscription->getPrice() * 100, // Stripe expects the amount in cents
-                    ],
+                        'unit_amount' => ((int)$plan->getPrice()) * 100,                    ],
                     'quantity' => 1,
                 ]
             ],

@@ -1,0 +1,116 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Recipe index
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<!-- Ajoutez le lien vers Font Awesome pour les icônes -->
+	<link
+	rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<!-- Ajoutez du style pour styliser les icônes -->
+	<style>
+		/* CSS pour styliser les icônes */
+		.action-icons a {
+			margin-right: 5px; /* Ajouter un espacement entre les icônes */
+			color: #007bff; /* Changer la couleur des icônes */
+			text-decoration: none; /* Supprimer la soulignement des liens */
+		}
+
+		.action-icons a:hover {
+			color: #0056b3; /* Changer la couleur au survol */
+		}
+	</style>
+{% endblock %}
+
+{% block body %}
+	{{ parent() }}
+
+	<div class="card" style="width: 60rem; margin-left: 420px; margin-top: 100px">
+		<div class="card-body">
+			<a href="{{ path('app_recipe_index') }}">
+				<i class="fas fa-arrow-left"></i>
+			</a>
+			<h5 class="card-title text-center">List Recipe
+			</h5>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>TotalCalories</th>
+						<th>TotalProtein</th>
+						<th>TotalCarbs</th>
+						<th>TotalFat</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for recipe in recipes %}
+						<tr>
+							<td>{{ recipe.name }}</td>
+							<td>{{ recipe.totalCalories }}</td>
+							<td>{{ recipe.totalProtein }}</td>
+							<td>{{ recipe.totalCarbs }}</td>
+							<td>{{ recipe.totalFat }}</td>
+							<td
+								class="action-icons">
+								<!-- Utilisez les classes CSS pour styliser les icônes -->
+								<a href="{{ path('app_recipe_show', {'id': recipe.id}) }}">
+									<i class="fas fa-eye"></i>
+								</a>
+								<a href="{{ path('app_recipe_edit', {'id': recipe.id}) }}">
+									<i class="fas fa-edit"></i>
+								</a>
+								<a href="{{ path('app_recipe_archive', {'id': recipe.id}) }}">
+									<i class="fas fa-archive text-warning"></i>
+								</a>
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="6">no records found</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			<a href="{{ path('app_recipe_new') }}">
+				<i class="fas fa-plus"></i>
+				Create new
+			</a>
+			{% if recipes.getTotalItemCount > recipes.getItemNumberPerPage %}
+				<nav aria-label="Page navigation">
+					<ul
+						class="pagination justify-content-center">
+						{# Lien vers la page précédente #}
+						{% if recipes.getCurrentPageNumber() > 1 %}
+							<li class="page-item">
+								<a class="page-link" href="{{ path(app.request.attributes.get('_route'), app.request.query.all|merge({'page': recipes.getCurrentPageNumber() - 1})) }}" aria-label="Previous">
+									<span aria-hidden="true">&laquo;</span>
+									<span class="sr-only">Précedent</span>
+								</a>
+							</li>
+						{% endif %}
+
+						{# Afficher les numéros de page #}
+						{% for page in 1..recipes.pageCount %}
+							<li class="page-item{% if page == recipes.getCurrentPageNumber() %} active{% endif %}">
+								<a class="page-link" href="{{ path(app.request.attributes.get('_route'), app.request.query.all|merge({'page': page})) }}">{{ page }}</a>
+							</li>
+						{% endfor %}
+
+						{# Lien vers la page suivante #}
+						{% if recipes.getCurrentPageNumber() < recipes.pageCount %}
+							<li class="page-item">
+								<a class="page-link" href="{{ path(app.request.attributes.get('_route'), app.request.query.all|merge({'page': recipes.getCurrentPageNumber() + 1})) }}" aria-label="Next">
+									<span aria-hidden="true">&raquo;</span>
+									<span class="sr-only">Suivant</span>
+								</a>
+							</li>
+						{% endif %}
+					</ul>
+				</nav>
+			{% endif %}
+		</div>
+
+	</div>
+{% endblock %}

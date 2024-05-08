@@ -49,29 +49,13 @@
             <div class="collapse text-center navbar-collapse" id="navbarsid">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ path('app_main') }}">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
-                           aria-expanded="false">Pages.</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="about.html">About</a></li>
-                            <li><a class="dropdown-item" href="trainer.html">Trainer</a></li>
-                            <li><a class="dropdown-item" href="course.html">Courses</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="pricing.html">Memebership</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true"
-                           aria-expanded="false">Blog.</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="blog.html">Blog Grid</a></li>
-                            <li><a class="dropdown-item" href="blog-sidebar.html">Blog Sidebar</a></li>
-                            <li><a class="dropdown-item" href="blog-single.html">Blog Details</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ path('app_membership') }}">Memberships</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ path('app_ex') }}">Exercices</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ path('app_plan') }}">Plans</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ path('app_food_index2') }}">Food</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ path('app_recipe_index2') }}">Recipes</a></li>
                 </ul>
                 <div class="my-md-0 ml-lg-4 mt-4 mt-lg-0 ml-auto text-lg-right mb-3 mb-lg-0">
                     <a href="tel:+23-345-67890">

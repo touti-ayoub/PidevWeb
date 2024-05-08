@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Exercice;
 use App\Entity\Plan;
 use App\Repository\SubscriptionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -33,10 +34,12 @@ class FrontController extends AbstractController
     #[Route('/main', name: 'app_main')]
     public function index(): Response
     {
-        $subscriptions = $this->subscriptionRepository->findAll();
+        // Fetch only the first four plans
+        $plans = $this->getDoctrine()->getRepository(Plan::class)->findBy([], null, 4);
 
         return $this->render('front/main.html.twig', [
-            'subscriptions' => $subscriptions,
+            'plans' => $plans,
+            'limited' => true,  // This indicates that the view is limited
         ]);
     }
 
@@ -71,11 +74,23 @@ class FrontController extends AbstractController
     public function plan(): Response
     {
         // Fetch only the first four plans
-        $plans = $this->getDoctrine()->getRepository(Plan::class)->findBy([], null, 4);
+        $plans = $this->getDoctrine()->getRepository(Plan::class)->findAll();
 
         return $this->render('front/allPlans.html.twig', [
             'plans' => $plans,
-            'limited' => true,  // This indicates that the view is limited
+            'limited' => false,  // This indicates that the view is limited
+        ]);
+    }
+
+    #[Route('/user/exercices', name: 'app_ex')]
+    public function ex(): Response
+    {
+        // Fetch only the first four plans
+        $exercices = $this->getDoctrine()->getRepository(Exercice::class)->findAll();
+
+        return $this->render('front/allExercices.html.twig', [
+            'exercices' => $exercices,
+            'limited' => false,  // This indicates that the view is limited
         ]);
     }
 }

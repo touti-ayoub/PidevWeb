@@ -50,14 +50,14 @@
                     {{ form_label(form.NOM) }}
                     {{ form_widget(form.NOM, {'attr': {'class': 'form-control'}}) }}
                     <div class="error">
-                    {{ form_errors(form.NOM) }}
+                        {{ form_errors(form.NOM) }}
                     </div>
                 </div>
                 <div class="form-group">
                     {{ form_label(form.DESCRIPTION) }}
                     {{ form_widget(form.DESCRIPTION, {'attr': {'class': 'form-control'}}) }}
                     <div class="error">
-                    {{ form_errors(form.DESCRIPTION) }}
+                        {{ form_errors(form.DESCRIPTION) }}
                     </div>
                 </div>
                 <div class="form-group">
@@ -65,7 +65,7 @@
                     {{ form_widget(form.imageFile, {'attr': {'class': 'form-control'}}) }}
                     {{ form_errors(form.imageFile) }}
                     {% if exercice.getIMAGEURL %}
-                        <img src="{{ asset('uploads/' ~ exercice.getIMAGEURL) }}" alt="Exercice image"
+                        <img src="{{ asset('images/' ~ exercice.getIMAGEURL) }}" alt="Exercice image"
                              style="max-width: 150px !important; max-height: 150px;">
                     {% endif %}
                 </div>
@@ -73,7 +73,7 @@
                     {{ form_label(form.MUSCLE_CIBLE) }}
                     {{ form_widget(form.MUSCLE_CIBLE, {'attr': {'class': 'form-control'}}) }}
                     <div class="error">
-                    {{ form_errors(form.MUSCLE_CIBLE) }}
+                        {{ form_errors(form.MUSCLE_CIBLE) }}
                     </div>
                 </div>
                 <a href="#" onclick="this.closest('form').submit()">

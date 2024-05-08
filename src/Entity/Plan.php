@@ -83,6 +83,22 @@ class Plan
 
         return $this;
     }
+    #[ORM\Column(length: 10)]
+    private ?string $price = null;
+
+    public function getPrice(): ?string
+    {
+        return $this->price;
+    }
+
+    public function setPrice(string $price): self
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+
 
     /**
      * @Assert\NotBlank(message="Image cannot be blank")
@@ -184,4 +200,5 @@ class Plan
 
         return $this;
     }
+
 }

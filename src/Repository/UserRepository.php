@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Plan;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -71,6 +72,16 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     ', $rsm);
 
         return $query->getResult();
+    }
+
+    public function findByLikedPlan(Plan $plan)
+    {
+        return $this->createQueryBuilder('u')
+            ->join('u.likedPlans', 'p')
+            ->where('p.id = :planId')
+            ->setParameter('planId', $plan->getId())
+            ->getQuery()
+            ->getResult();
     }
 
 //    /**
